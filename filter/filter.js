@@ -28,48 +28,35 @@ var filter = React.createClass({
 
   },
 
-sort:function(){
+sort:function(EO){
+  this.setState({sorted:EO.target.checked,})
+  console.log(EO.target.checked);
 this.generator();
+
 },
 
-inputfilter:function(){
+inputfilter:function(EO){
+  this.setState({contain:EO.target.value,})
   this.generator();
 },
 
-generator:function(){
+generator:function(EO){
 
-  this.state.contain=
-  this.setState({text:this.state.code})
-  //this.setState.words.sort();
-  //console.log(this.props.words[1].text);
-  //console.log(this.state.words[1].text);
+  var work=this.props.words;
+  if (this.state.contain!=""){
+    contain=this.state.contain;
+    work=work.filter(function(step,index){
+      if (contain==step.text){
+        return (step.text);
+      }
+    });
+  }
+
+  if (this.state.sorted==true){
+    words.sort(d,d);
+  }
+  this.setState({words:work})
   
-  if(this.state.sorted==false){
-  for (var a = 0, endI = this.state.words.length - 1; a < endI; a++) { //сортировка пузырьком чисел
-    for (var j = 0, endJ = endI - a; j < endJ; j++) {
-        if (this.state.words[j].text > this.state.words[j+1].text) {
-            var swap = this.state.words[j].text;
-            this.state.words[j].text = this.state.words[j+1].text;
-            this.state.words[j+1].text = swap;
-        }
-    }
-  }
-  this.setState({sorted: true})
-  }
-  else
-    {
-      this.state.words=this.props.Copywords
-      this.state.sorted=false;
-    }
-  if (this.state.sontain!=""){
-
-  //  var positiveArr = this.state.words.filter(function(el) {
-      
-      
-    //});
-
-
-  }
 
 
 },
@@ -87,7 +74,7 @@ generator:function(){
         type: 'checkbox', name: 'check', className: 'Check',onClick:this.sort,//defaultChecked:'false'
       }),
       React.DOM.input({
-        type: 'text', name: 'text', className: 'text', onInput:this.sort, 
+        type: 'text', name: 'text', className: 'text', onInput:this.inputfilter, 
       }),
       React.DOM.div({ className: 'divText', }, catalogCode),
       console.log(catalogCode2),
