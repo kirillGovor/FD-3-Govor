@@ -71,12 +71,13 @@ generator:function(EO){
 
     for (var i =0;i<work.length;i++){
       k[i]=work[i];
-    
+      work[i].text=woks[i];
+      
       
       
     }
     this.setState({work:{text:woks}}) ;//как правильно закинуть в work.text? Что-то туплю
-   // this.setState({work:woks})
+    this.setState({work:woks})
   }
   else{
   
