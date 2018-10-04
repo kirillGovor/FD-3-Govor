@@ -41,6 +41,8 @@ inputfilter:function(EO){
 },
 
 generator:function(EO){
+
+  /*
 //фильтр
   var work=this.props.words;
 
@@ -72,27 +74,40 @@ generator:function(EO){
     for (var i =0;i<work.length;i++){
       k[i]=work[i];
       work[i].text=woks[i];
-      
-      
-      
     }
     this.setState({work:{text:woks}}) ;//как правильно закинуть в work.text? Что-то туплю
     this.setState({work:woks})
+
+
   }
   else{
-  
     this.setState({work:k})
-
-
   }
  
-
- 
-  
-  
+*/
 
 
+
+//var woks=;
+
+for (var i =0;i<this.props.words.length;i++){
+  woks[i]=this.props.words[i].text;
+}
+  /////////////////
+  let work=woks.slice(); // делаем плоскую копию всех слов, т.к. возможно будем сортировать массив
+  if ( this.state.contain )
+  work=work.filter( line => line.indexOf(this.state.contain)!=-1 );
+  if ( this.state.sorted )
+  work.sort();
+  this.setState( { work:work } );
+////////////
 },
+
+
+
+
+
+
 
   render: function () {
     var catalogCode = this.props.words.map(v =>
