@@ -42,13 +42,14 @@ inputfilter:function(EO){
 
 generator:function(EO){
 //фильтр
-  var trueWork =this.props.words;
   var work=this.props.words;
+
+
   if (this.state.contain!=""){
     contain=this.state.contain;
     work=work.filter(function(step,index){
       if (contain==step.text){
-        return (step.text);
+        return (step.text); //не работает, просто, чтобы ошибку не выводил)
       }
     });
   }
@@ -56,8 +57,8 @@ generator:function(EO){
 
 //сортировка
 
- var woks=[];
- var k=[];
+ var woks=[]; // будет сортированный массив
+ var k=[];//временная перемен
     for (var i =0;i<work.length;i++){
       woks[i]=work[i].text;
     }
@@ -70,17 +71,16 @@ generator:function(EO){
 
     for (var i =0;i<work.length;i++){
       k[i]=work[i];
-      work[i].text=woks[i];
+    
       
       
     }
-    console.log(k);
-  
-    this.setState({words:woks})
+    this.setState({work:{text:woks}}) ;//как правильно закинуть в work.text? Что-то туплю
+   // this.setState({work:woks})
   }
   else{
   
-    this.setState({words:k})
+    this.setState({work:k})
 
 
   }
