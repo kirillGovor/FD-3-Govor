@@ -29,19 +29,20 @@ var filter = React.createClass({
   },
 
 sort:function(EO){
-  this.setState({sorted:EO.target.checked,})
-  console.log(EO.target.checked);
-this.generator();
+  this.setState({sorted:EO.target.checked},this.generator)
+  
+
 
 },
 
 inputfilter:function(EO){
-  this.setState({contain:EO.target.value,})
-  this.generator();
+  this.setState({contain:EO.target.value,},this.generator)
+ 
 },
 
 generator:function(EO){
-
+//фильтр
+  var trueWork =this.props.words;
   var work=this.props.words;
   if (this.state.contain!=""){
     contain=this.state.contain;
@@ -52,10 +53,41 @@ generator:function(EO){
     });
   }
 
-  if (this.state.sorted==true){
-    words.sort(d,d);
+
+//сортировка
+
+ var woks=[];
+ var k=[];
+    for (var i =0;i<work.length;i++){
+      woks[i]=work[i].text;
+    }
+
+  if (this.state.sorted==true){ 
+    woks.sort(function(a,b){
+      if(a < b) return -1;
+      if(a > b) return 1;
+    });
+
+    for (var i =0;i<work.length;i++){
+      k[i]=work[i];
+      work[i].text=woks[i];
+      
+      
+    }
+    console.log(k);
+  
+    this.setState({words:woks})
   }
-  this.setState({words:work})
+  else{
+  
+    this.setState({words:k})
+
+
+  }
+ 
+
+ 
+  
   
 
 
@@ -77,7 +109,7 @@ generator:function(EO){
         type: 'text', name: 'text', className: 'text', onInput:this.inputfilter, 
       }),
       React.DOM.div({ className: 'divText', }, catalogCode),
-      console.log(catalogCode2),
+      
       
     );
 
