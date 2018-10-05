@@ -42,10 +42,10 @@ var filter = React.createClass({
     /////////////////
     let work = this.props.words.slice(); // делаем плоскую копию всех слов, т.к. возможно будем сортировать массив
     if (this.state.contain)
-      work = work.filter(workf => workf.indexOf(this.state.contain) != -1);
+      work = work.filter(work => work.indexOf(this.state.contain) != -1);
     if (this.state.sorted)
       work.sort();
-      console.log();
+      
     this.setState({ work: work });
     console.log(this.state.work)
     console.log(this.props.words);
