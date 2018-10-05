@@ -5,13 +5,7 @@ var filter = React.createClass({
 
   propTypes: {
 
-    words: React.PropTypes.arrayOf(
-      React.PropTypes.shape({
-
-
-
-      }),
-    ),
+  
 
   },
 
