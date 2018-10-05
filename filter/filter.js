@@ -47,6 +47,8 @@ var filter = React.createClass({
       work.sort();
       
     this.setState({ work: work });
+    this.state.work=work;
+    this.props.words=work;
     console.log(this.state.work)
     console.log(this.props.words);
     ////////////

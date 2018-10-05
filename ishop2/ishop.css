@@ -1,0 +1,15 @@
+.table {
+    border: solid 1px red;
+    margin:20px;
+
+}
+.table .nameProduct{
+    text-align: center;
+    font-size: 20px;
+    text-align: center;
+}
+.table .Count{
+    border: solid 1px black;
+    margin:0;
+    text-align:center;
+}
