@@ -47,10 +47,7 @@ var filter = React.createClass({
       work.sort();
       
     this.setState({ work: work });
-    this.state.work=work;
-    this.props.words=work;
-    console.log(this.state.work)
-    console.log(this.props.words);
+   
     ////////////
   },
 
@@ -60,7 +57,7 @@ var filter = React.createClass({
 
 
   render: function () {
-    var catalogCode = this.props.words.map(v =>
+    var catalogCode = this.state.work.map(v =>
       React.DOM.p({ className: 'text',key:v }, v),
     );
 
