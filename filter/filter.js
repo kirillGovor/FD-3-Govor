@@ -5,7 +5,7 @@ var filter = React.createClass({
 
   propTypes: {
 
-    work: React.PropTypes.arrayOf(
+    words: React.PropTypes.arrayOf(
       React.PropTypes.shape({
 
 
@@ -47,7 +47,8 @@ var filter = React.createClass({
       work.sort();
       console.log();
     this.setState({ work: work });
-    
+    console.log(this.state.work)
+    console.log(this.props.words);
     ////////////
   },
 
@@ -58,7 +59,7 @@ var filter = React.createClass({
 
   render: function () {
     var catalogCode = this.props.words.map(v =>
-      React.DOM.p({ className: 'text',key:Math.random() }, v),
+      React.DOM.p({ className: 'text',key:v }, v),
     );
 
     catalogCode2 = { catalogCode, sorted: this.props.sorted = 'false', contain: this.props.contain = '', }
