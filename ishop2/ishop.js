@@ -63,15 +63,16 @@ var ishop = React.createClass({
 
     
     return React.DOM.div({ className: 'VotesBlock' },
-      React.DOM.div({ className: 'Question' }, this.props.MainText),
-      React.DOM.table({ className: 'table' }, React.DOM.tbody({ className: 'block' },
-    
+        React.DOM.div({ className: 'Question' }, this.props.MainText),
+        React.DOM.table({ className: 'table' }, 
+        React.DOM.tbody({ className: 'block' },
+        React.DOM.tr({ className: 'tr', },
         React.DOM.td({ className: 'Count', key:"MainTr"+1 }, 'Название: '),
         React.DOM.td({ className: 'Count', key:"MainTr"+2}, 'Изображение: '),
         React.DOM.td({ className: 'Count',key:"MainTr"+3 }, 'Цена: '),
         React.DOM.td({ className: 'Count',key:"MainTr"+4 }, 'Количество: '),
         React.DOM.td({ className: 'Count',key:"MainTr"+5 }, 'Свойства: '),
-      ), catalogCode),
+      ),), catalogCode),
       
     );
   },
