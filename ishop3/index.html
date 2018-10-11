@@ -14,7 +14,7 @@
   <script src="ishopFunctionality.js"></script>
   <link rel="stylesheet" type="text/css" href="ishop.css" />
   <script type="text/javascript" src="data.json"></script>
-
+  <script src='http://fe.it-academy.by/JQ/jquery.js'></script>
   <script>
 
     var text='список товаров';
@@ -22,7 +22,7 @@
     function buildVotesBlock() {
 
       var shopArr=[ 
-        {block:
+       /* {block:
             'Диван',
             code:"sofa",
             cost:1500, 
@@ -43,7 +43,7 @@
         cost:700,
         url:"table.jpg",
         kolvo:456,
-        } 
+        } */
       ];
       
     
@@ -55,12 +55,12 @@
 
 
         function dataLoaded(data) {
-            data = JSON.parse(data);
-
-            build(data, "form");   
+          shopArr = JSON.parse(data);
+          
+          
         }
 
-        function errorHandler2(jqXHR, statusStr, errorStr) {
+        function errorHandler(jqXHR, statusStr, errorStr) {
             alert(statusStr + ' ' + errorStr);
         }
 
