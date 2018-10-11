@@ -1,0 +1,88 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta charset="utf-8" />
+  <title>Магаз</title>
+</head> 
+<body> 
+  
+  <div id="container"></div> 
+      
+  <script src="https://unpkg.com/react@15/dist/react.js"></script> 
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script> 
+  <script src="ishop.js"></script>
+  <script src="ishopFunctionality.js"></script>
+  <link rel="stylesheet" type="text/css" href="ishop.css" />
+  <script type="text/javascript" src="data.json"></script>
+
+  <script>
+
+    var text='список товаров';
+
+    function buildVotesBlock() {
+
+      var shopArr=[ 
+        {block:
+            'Диван',
+            code:"sofa",
+            cost:1500, 
+            url:"sofa.jpg",
+            kolvo:10,
+            }, 
+
+        {block:
+            'Стул',
+            code:"sit",
+            cost:300, 
+            url:"sit.jpg",
+            kolvo:15,
+        }, 
+        {block:
+        'Стол',
+        code:"table",
+        cost:700,
+        url:"table.jpg",
+        kolvo:456,
+        } 
+      ];
+      
+    
+
+
+       $.ajax("data.json",
+            { type: 'GET', dataType: 'text', success: dataLoaded, error: errorHandler }
+        );
+
+
+        function dataLoaded(data) {
+            data = JSON.parse(data);
+
+            build(data, "form");   
+        }
+
+        function errorHandler2(jqXHR, statusStr, errorStr) {
+            alert(statusStr + ' ' + errorStr);
+        }
+
+
+
+
+
+
+
+      ReactDOM.render(
+        React.createElement(ishop,{MainText:text,catalog:shopArr}), 
+       
+        document.getElementById('container') 
+      );
+      
+    }
+
+  buildVotesBlock();
+
+   
+
+  </script>
+
+</body> 
+</html>
