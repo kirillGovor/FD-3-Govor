@@ -62,11 +62,19 @@ var ishop = React.createClass({
 
 
   render: function () {
-  
+   
+      var catalogCode = this.props.catalog.map(v =>
+        React.createElement(Tovar,{key:v.code,
+        block:v.block,code:v.code,cost:v.cost,url:v.url,kolvo:v.kolvo,
+        catalog:this.props.catalog, color:this.color,
+        delete:this.delete,ishop: this.state.ishop,
+        }),
+      
+      );
 
     
     return React.DOM.div({ className: 'VotesBlock' },
-        React.createElement(ishopFunctionality,{MainText:text,catalog:this.props.catalog, color:this.color,delete:this.delete,ishop: this.state.ishop,}),
+        //React.createElement(ishopFunctionality,{MainText:text,catalog:this.props.catalog, color:this.color,delete:this.delete,ishop: this.state.ishop,}),
         React.DOM.div({ className: 'Question' },),
         React.DOM.table({ className: 'table' }, 
     ),
