@@ -17,8 +17,7 @@ var Tovar = React.createClass({
 
 
     delete: function (EO) {
-        let contain = this.props.catalog.slice();
-        contain=contain.filter(number => number!= this.props.ishop);
+        let contain = this.props.ishop
         this.props.delete(contain);
        
       },
@@ -28,17 +27,8 @@ var Tovar = React.createClass({
 
 
       color:function(EO){
-        let contain = this.props.catalog.slice();
-        for (i = 0; i <= contain.length - 1; i++) {
-          if (contain[i].code == EO.target.id) {
-          var color = document.getElementById("color"+contain[i].code);
-          color.style.background="orange";
-          }
-          else{
-            var color = document.getElementById( "color"+contain[i].code );
-            color.style.background="white";
-          }  
-      }
+        let contain = this.props.ishop;
+       this.props.color(contain);
       },
 
     render: function () {
@@ -46,7 +36,7 @@ var Tovar = React.createClass({
 
 
         return React.DOM.tbody({ id: this.props.code, onClick: this.color, key: this.props.code, className: 'block', },
-            React.DOM.tr({ id: "color" + this.props.code, onClick: this.color, className: 'tr', },
+            React.DOM.tr({className:this.props.background, id: "color" + this.props.code, onClick: this.color,  },
                 React.DOM.td({ id: this.props.code, className: 'Count', }, this.props.code,
                 ),
                 React.DOM.td({ id: this.props.code, }, React.DOM.img({ id:this.props.code, className: 'Count', src: this.props.url, width: 100, height: 100, })),

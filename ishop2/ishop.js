@@ -27,19 +27,32 @@ var ishop = React.createClass({
 
 
   delete: function (contain) {
-    this.setState({ ishop: contain },);
+    let catalog = this.state.ishop.slice();
+    catalog=catalog.filter(number => number!= contain);
+    this.setState({ ishop: catalog },);
   },
 
 
-
+  color:function(contain){
+    let catalog = this.props.catalog.slice();
+    catalog.forEach(function(item, i, catalog) {
+     if(item==contain){
+       item.background="background";
+     }
+     else{
+      item.background="null"
+     }
+    });
+    this.setState({ ishop: catalog },);
+  },
 
 
   render: function () {
    
       var catalogCode = this.state.ishop.map(v =>
         React.createElement(Tovar,{key:v.code,
-        block:v.block,code:v.code,cost:v.cost,url:v.url,kolvo:v.kolvo,
-        catalog:this.state.ishop, color:this.color,
+        block:v.block,code:v.code,cost:v.cost,url:v.url,kolvo:v.kolvo,background:v.background,
+        color:this.color,
         delete:this.delete,ishop: v,
         }),
       
