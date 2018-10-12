@@ -3,7 +3,6 @@ var ishop = React.createClass({
   displayName: 'shop',
 
   propTypes: {
-   
     ishop:React.PropTypes.arrayOf(
       React.PropTypes.shape({
         code: React.PropTypes.string.isRequired,
@@ -29,12 +28,12 @@ var ishop = React.createClass({
   delete: function (contain) {
     let catalog = this.state.ishop.slice();
     catalog=catalog.filter(number => number!= contain);
-    this.setState({ ishop: catalog },);
+    this.setState({ ishop: catalog },this.color());
   },
 
 
   color:function(contain){
-    let catalog = this.props.catalog.slice();
+    let catalog = this.state.ishop.slice();
     catalog.forEach(function(item, i, catalog) {
      if(item==contain){
        item.background="background";
@@ -43,7 +42,7 @@ var ishop = React.createClass({
       item.background="null"
      }
     });
-    this.setState({ ishop: catalog },);
+    this.setState({ ishop: catalog, },);
   },
 
 
