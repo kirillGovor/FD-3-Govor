@@ -28,7 +28,7 @@ var ishop = React.createClass({
   delete: function (contain) {
     let catalog = this.state.ishop.slice();
     catalog=catalog.filter(number => number!= contain);
-    this.setState({ ishop: catalog },this.color());
+    this.setState({ ishop: catalog },);
   },
 
 
