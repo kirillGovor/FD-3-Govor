@@ -28,8 +28,6 @@ var Tovar = React.createClass({
 
 
       color:function(EO){
-    
-    
         let contain = this.props.catalog.slice();
         for (i = 0; i <= contain.length - 1; i++) {
           if (contain[i].code == EO.target.id) {
@@ -39,9 +37,7 @@ var Tovar = React.createClass({
           else{
             var color = document.getElementById( "color"+contain[i].code );
             color.style.background="white";
-          }
-        
-        
+          }  
       }
       },
 
