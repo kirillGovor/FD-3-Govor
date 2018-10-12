@@ -23,7 +23,37 @@ var ishopFunctionality = React.createClass({
   
     },
   
-  
+    delete: function (EO) {
+   
+      EO.stopPropagation();
+      EO.nativeEvent.stopImmediatePropagation();
+      let contain = this.state.ishop.slice();
+      contain=contain.filter(function(number) {
+        return (number.code !=EO.target.id) ;
+      });
+      this.setState({ ishop: contain, },this.color());
+    },
+
+
+
+
+    color:function(EO){
+    
+    
+      let contain = this.state.ishop.slice();
+      for (i = 0; i <= contain.length - 1; i++) {
+        if (contain[i].code == EO.target.id) {
+        var color = document.getElementById("color"+contain[i].code);
+        color.style.background="orange";
+        }
+        else{
+          var color = document.getElementById( "color"+contain[i].code );
+          color.style.background="white";
+        }
+      
+      this.setState({ ishop: contain });
+    }
+    },
 
     
   render: function () {
