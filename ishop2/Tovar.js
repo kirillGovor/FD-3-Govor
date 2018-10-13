@@ -17,6 +17,7 @@ var Tovar = React.createClass({
 
 
     delete: function (EO) {
+        
         EO.stopPropagation()
         let contain = this.props.ishop
         this.props.delete(contain);
