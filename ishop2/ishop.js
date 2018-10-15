@@ -19,6 +19,10 @@ var ishop = React.createClass({
       ishop: this.props.catalog,
       delited: "",
 
+
+      atr:0,
+
+
     }
 
   },
@@ -33,7 +37,7 @@ var ishop = React.createClass({
 
 
   color:function(contain){
-    let catalog = this.state.ishop.slice();
+   /* let catalog = this.state.ishop.slice();
     catalog.forEach(function(item, i, catalog) {
      if(item==contain){
        item.background="background";
@@ -42,7 +46,9 @@ var ishop = React.createClass({
       item.background="null"
      }
     });
-    this.setState({ ishop: catalog, },);
+    this.setState({ ishop: catalog, },); */
+    this.state.atr=contain;
+
   },
 
 /*
@@ -56,6 +62,8 @@ ist:true or false in render
         block:v.block,code:v.code,cost:v.cost,url:v.url,kolvo:v.kolvo,background:v.background,
         color:this.color,
         delete:this.delete,ishop: v,
+        
+        atr:this.state.atr,
         }),
       
       );
