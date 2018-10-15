@@ -45,7 +45,10 @@ var ishop = React.createClass({
     this.setState({ ishop: catalog, },);
   },
 
-
+/*
+io - this.set state=0;
+ist:true or false in render
+*/
   render: function () {
    
       var catalogCode = this.state.ishop.map(v =>
