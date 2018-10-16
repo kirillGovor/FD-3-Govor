@@ -20,7 +20,7 @@ var ishop = React.createClass({
       delited: "",
 
 
-      atr:0,
+      atr:null,
 
 
     }
@@ -47,7 +47,8 @@ var ishop = React.createClass({
      }
     });
     this.setState({ ishop: catalog, },); */
-    this.state.atr=contain;
+    this.setState({atr:contain.code})
+    
 
   },
 

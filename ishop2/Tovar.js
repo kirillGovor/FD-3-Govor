@@ -36,9 +36,10 @@ var Tovar = React.createClass({
     render: function () {
 
 
-
+        if (this.props.atr == this.props.ishop.code){
         return React.DOM.tbody({ id: this.props.code, onClick: this.color, key: this.props.code, className: 'block', },
-            React.DOM.tr({className:this.props.background, id: "color" + this.props.code, onClick: this.color,  },
+            React.DOM.tr({ id: "color" + this.props.code, onClick: this.color,
+             className: 'background',        },
                 React.DOM.td({ id: this.props.code, className: 'Count', }, this.props.code,
                 ),
                 React.DOM.td({ id: this.props.code, }, React.DOM.img({ id:this.props.code, className: 'Count', src: this.props.url, width: 100, height: 100, })),
@@ -49,6 +50,27 @@ var Tovar = React.createClass({
                 ),
             ),
         )
+    }
+
+    else{
+
+        return React.DOM.tbody({ id: this.props.code, onClick: this.color, key: this.props.code, className: 'block', },
+        React.DOM.tr({ id: "color" + this.props.code, onClick: this.color,
+         className: null,        },
+            React.DOM.td({ id: this.props.code, className: 'Count', }, this.props.code,
+            ),
+            React.DOM.td({ id: this.props.code, }, React.DOM.img({ id:this.props.code, className: 'Count', src: this.props.url, width: 100, height: 100, })),
+            React.DOM.td({ id: this.props.code, className: 'Count' }, this.props.cost),
+            React.DOM.td({ id: this.props.code, className: 'Count' }, this.props.kolvo),
+            React.DOM.td({ id: this.props.code, className: 'Count' },
+                React.DOM.input({ id: this.props.code, className: 'input', value: 'delete', type: 'submit', onClick: this.delete }),
+            ),
+        ),
+    )
+
+ }
+
+
     },
 
 });
