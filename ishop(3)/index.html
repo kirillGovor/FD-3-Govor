@@ -10,11 +10,12 @@
       
   <script src="https://unpkg.com/react@15/dist/react.js"></script> 
   <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script> 
+      
   <script src="ishop.js"></script>
-  <script src="ishopFunctionality.js"></script>
+  <!-- <script src="ishopFunctionality.js"></script> -->
+  <script src="Tovar.js"></script>
   <link rel="stylesheet" type="text/css" href="ishop.css" />
-  <script type="text/javascript" src="data.json"></script>
-  <script src='http://fe.it-academy.by/JQ/jquery.js'></script>
+
   <script>
 
     var text='список товаров';
@@ -22,12 +23,13 @@
     function buildVotesBlock() {
 
       var shopArr=[ 
-       /* {block:
+        {block:
             'Диван',
             code:"sofa",
             cost:1500, 
             url:"sofa.jpg",
             kolvo:10,
+            background:null
             }, 
 
         {block:
@@ -36,6 +38,7 @@
             cost:300, 
             url:"sit.jpg",
             kolvo:15,
+            background:null
         }, 
         {block:
         'Стол',
@@ -43,33 +46,10 @@
         cost:700,
         url:"table.jpg",
         kolvo:456,
-        } */
+        background:null
+        } 
       ];
-      
-    
-
-
-       $.ajax("data.json",
-            { type: 'GET', dataType: 'text', success: dataLoaded, error: errorHandler }
-        );
-
-
-        function dataLoaded(data) {
-          shopArr = JSON.parse(data);
-          
-          
-        }
-
-        function errorHandler(jqXHR, statusStr, errorStr) {
-            alert(statusStr + ' ' + errorStr);
-        }
-
-
-
-
-
-
-
+  
       ReactDOM.render(
         React.createElement(ishop,{MainText:text,catalog:shopArr}), 
        
