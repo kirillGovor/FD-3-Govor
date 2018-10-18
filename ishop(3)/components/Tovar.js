@@ -1,39 +1,42 @@
-var Tovar = React.createClass({
+import React from 'react';
+import PropTypes from 'prop-types';
 
-    displayName: 'Tovar',
+class Tovar extends React.Component{
 
-    propTypes: {
+    
+
+    static propTypes = {
       
         
-    },
+    }
 
-    getInitialState: function () {
-        return {
+   state = {
+        
             catalog: this.props.catalog,
-        }
+        
 
-    },
+    }
 
 
 
-    delete: function (EO) {
+    delete = (EO) => {
         
         EO.stopPropagation()
         let contain = this.props.ishop
         this.props.delete(contain);
        
-      },
+      }
 
 
 
 
 
-      color:function(EO){
+      color =(EO) =>{
         let contain = this.props.ishop;
         this.props.color(contain);
-      },
+      }
 
-    render: function () {
+    render () {
 
 
         if (this.props.atr == this.props.ishop.code){
@@ -71,8 +74,9 @@ var Tovar = React.createClass({
  }
 
 
-    },
+    }
 
-});
+}
+export default Tovar;
 
 

@@ -1,8 +1,16 @@
-var ishop = React.createClass({
+import React from 'react';
+import PropTypes from 'prop-types';
+import './ishop.css';
 
-  displayName: 'shop',
+import Tovar from './Tovar';
 
-  propTypes: {
+
+
+class ishop extends React.Component {
+
+ 
+
+ static propTypes = {
     ishop:React.PropTypes.arrayOf(
       React.PropTypes.shape({
         code: React.PropTypes.string.isRequired,
@@ -11,40 +19,34 @@ var ishop = React.createClass({
         url: React.PropTypes.string.isRequired,
        
       })
-    )
-  },
+    ),
+  }
 
-  getInitialState: function () {
-    return {
+ state =  {
+   
       ishop: this.props.catalog,
       delited: "",
-
-
       atr:null,
-
-
-    }
-
-  },
+  }
 
 
 
-  delete: function (contain) {
+  delete = (contain) => {
     let catalog = this.state.ishop.slice();
     catalog=catalog.filter(number => number!= contain);
     this.setState({ ishop: catalog },);
-  },
+  }
 
 
-  color:function(contain){
+  color =(contain)=>{
 
     this.setState({atr:contain.code})
     
 
-  },
+  }
 
 
-  render: function () {
+  render() {
    
       var catalogCode = this.state.ishop.map(v =>
         React.createElement(Tovar,{key:v.code,
@@ -71,6 +73,7 @@ var ishop = React.createClass({
   ),), catalogCode),
   
 );
-  },
+  }
 
-});
+}
+export default ishop;

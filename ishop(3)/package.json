@@ -4,13 +4,14 @@
   "description": "",
   "main": "App.js",
   "scripts": {
-    "start": ".\\node_modules\\.bin\\webpack",
-    "build": "babel common -d bebeldist --presets es2015",
+    "start": "lite-server",
+    "build": ".\\node_modules\\.bin\\webpack",
     "watch": "babel common -d bebeldist --presets es2015 -w"
   },
   "dependencies": {
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "lite-server": "^2.4.0",
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
