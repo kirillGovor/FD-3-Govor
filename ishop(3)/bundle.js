@@ -22183,7 +22183,7 @@ module.exports = ReactDOMInvalidARIAHook;
 /* 184 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: SyntaxError: C:/Git/FD-3-Govor/ishop(3)/components/ishop.js: Unexpected token (13:18)\n\n\u001b[0m \u001b[90m 11 | \u001b[39m \n \u001b[90m 12 | \u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 | \u001b[39m static propTypes \u001b[33m=\u001b[39m {\n \u001b[90m    | \u001b[39m                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 | \u001b[39m    ishop\u001b[33m:\u001b[39m\u001b[33mReact\u001b[39m\u001b[33m.\u001b[39m\u001b[33mPropTypes\u001b[39m\u001b[33m.\u001b[39marrayOf(\n \u001b[90m 15 | \u001b[39m      \u001b[33mReact\u001b[39m\u001b[33m.\u001b[39m\u001b[33mPropTypes\u001b[39m\u001b[33m.\u001b[39mshape({\n \u001b[90m 16 | \u001b[39m        code\u001b[33m:\u001b[39m \u001b[33mReact\u001b[39m\u001b[33m.\u001b[39m\u001b[33mPropTypes\u001b[39m\u001b[33m.\u001b[39mstring\u001b[33m.\u001b[39misRequired\u001b[33m,\u001b[39m\u001b[0m\n");
+throw new Error("Module build failed: SyntaxError: C:/Git/FD-3-Govor/ishop(3)/components/ishop.js: Unexpected token (13:18)\n\n\u001b[0m \u001b[90m 11 | \u001b[39m \n \u001b[90m 12 | \u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 | \u001b[39m static propTypes \u001b[33m=\u001b[39m {\n \u001b[90m    | \u001b[39m                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 | \u001b[39m    ishop\u001b[33m:\u001b[39mpropTypes\u001b[33m.\u001b[39marrayOf(\n \u001b[90m 15 | \u001b[39m      propTypes\u001b[33m.\u001b[39mshape({\n \u001b[90m 16 | \u001b[39m        code\u001b[33m:\u001b[39m propTypes\u001b[33m.\u001b[39mstring\u001b[33m.\u001b[39misRequired\u001b[33m,\u001b[39m\u001b[0m\n");
 
 /***/ }),
 /* 185 */

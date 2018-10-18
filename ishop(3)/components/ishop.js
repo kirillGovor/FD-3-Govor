@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import './ishop.css';
 
 import Tovar from './Tovar';
@@ -11,16 +11,16 @@ class ishop extends React.Component {
  
 
  static propTypes = {
-    ishop:React.PropTypes.arrayOf(
-      React.PropTypes.shape({
-        code: React.PropTypes.string.isRequired,
-        kolvo: React.PropTypes.number.isRequired,
-        cost: React.PropTypes.number.isRequired,
-        url: React.PropTypes.string.isRequired,
+    ishop:propTypes.arrayOf(
+      propTypes.shape({
+        code: propTypes.string.isRequired,
+        kolvo: propTypes.number.isRequired,
+        cost: propTypes.number.isRequired,
+        url: propTypes.string.isRequired,
        
       })
     ),
-  }
+  };
 
  state =  {
    
