@@ -15,6 +15,11 @@ module.exports = {
     devtool:'source-map',
     module:{ 
         rules:[
+            { 
+                test: /\.js$/, // какие файлы обрабатывать
+                exclude: /node_modules/, // какие файлы пропускать
+                use: { loader: "babel-loader" } // какой загрузчик использовать
+            },
             {
                 test: /\.css$/,
                 use: extractCSS.extract({

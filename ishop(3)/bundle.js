@@ -9600,26 +9600,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-    
-    
-    
-    var text='список товаров';
 
-    function buildVotesBlock() {
-    
- 
-      var shopArr=__webpack_require__(185);
-      __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_ishop__["default"],{MainText:text,catalog:shopArr}), 
-       
-        document.getElementById('container') 
-      );
-      
-    }
-
-  buildVotesBlock();
-
-   
+var text = 'список товаров';
+var shopArr = __webpack_require__(185);
+__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_ishop__["default"], { MainText: text, catalog: shopArr }), document.getElementById('container'));
 
 /***/ }),
 /* 82 */
@@ -22199,7 +22183,7 @@ module.exports = ReactDOMInvalidARIAHook;
 /* 184 */
 /***/ (function(module, exports) {
 
-throw new Error("Module parse failed: Unexpected token (13:18)\nYou may need an appropriate loader to handle this file type.\n|  \r\n| \r\n|  static propTypes = {\r\n|     ishop:React.PropTypes.arrayOf(\r\n|       React.PropTypes.shape({\r");
+throw new Error("Module build failed: SyntaxError: C:/Git/FD-3-Govor/ishop(3)/components/ishop.js: Unexpected token (13:18)\n\n\u001b[0m \u001b[90m 11 | \u001b[39m \n \u001b[90m 12 | \u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 | \u001b[39m static propTypes \u001b[33m=\u001b[39m {\n \u001b[90m    | \u001b[39m                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 | \u001b[39m    ishop\u001b[33m:\u001b[39m\u001b[33mReact\u001b[39m\u001b[33m.\u001b[39m\u001b[33mPropTypes\u001b[39m\u001b[33m.\u001b[39marrayOf(\n \u001b[90m 15 | \u001b[39m      \u001b[33mReact\u001b[39m\u001b[33m.\u001b[39m\u001b[33mPropTypes\u001b[39m\u001b[33m.\u001b[39mshape({\n \u001b[90m 16 | \u001b[39m        code\u001b[33m:\u001b[39m \u001b[33mReact\u001b[39m\u001b[33m.\u001b[39m\u001b[33mPropTypes\u001b[39m\u001b[33m.\u001b[39mstring\u001b[33m.\u001b[39misRequired\u001b[33m,\u001b[39m\u001b[0m\n");
 
 /***/ }),
 /* 185 */
