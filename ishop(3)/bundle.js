@@ -21401,18 +21401,15 @@ var Edit = function (_React$Component) {
 
             tick: 0
 
-        }, _this.tick = function (EO) {
+        }, _this.tick = function (contain) {
             _this.setState({ tick: 1 });
         }, _this.save = function (EO) {
 
             EO.stopPropagation();
             var contain = _this.props.ishop;
-            _this.props.delete(contain);
         }, _this.cancel = function (EO) {
             _this.setState({ tick: 0 });
             EO.stopPropagation();
-            var contain = _this.props.ishop;
-            _this.props.delete(contain);
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
@@ -21433,28 +21430,28 @@ var Edit = function (_React$Component) {
                         'div',
                         null,
                         "Name",
-                        _react2.default.createElement('input', { type: 'text', value: this.props.code }),
+                        _react2.default.createElement('input', { type: 'text', defaultValue: this.props.code }),
                         ' '
                     ),
                     _react2.default.createElement(
                         'div',
                         null,
                         "Price",
-                        _react2.default.createElement('input', { type: 'text', value: this.props.cost }),
+                        _react2.default.createElement('input', { type: 'text', defaultValue: this.props.cost }),
                         ' '
                     ),
                     _react2.default.createElement(
                         'div',
                         null,
                         "url",
-                        _react2.default.createElement('input', { type: 'text', value: this.props.url }),
+                        _react2.default.createElement('input', { type: 'text', defaultValue: this.props.url }),
                         ' '
                     ),
                     _react2.default.createElement(
                         'div',
                         null,
                         "Quantity",
-                        _react2.default.createElement('input', { type: 'text', value: this.props.kolvo }),
+                        _react2.default.createElement('input', { type: 'text', defaultValue: this.props.kolvo }),
                         ' '
                     ),
                     _react2.default.createElement(
@@ -21529,7 +21526,8 @@ var Tovar = function (_React$Component) {
 
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tovar.__proto__ || Object.getPrototypeOf(Tovar)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
 
-            catalog: _this.props.catalog
+            catalog: _this.props.catalog,
+            tick: 0
 
         }, _this.delete = function (EO) {
 
@@ -21540,7 +21538,9 @@ var Tovar = function (_React$Component) {
             var contain = _this.props.ishop;
             _this.props.color(contain);
         }, _this.edit = function (EO) {
+            EO.stopPropagation();
             var contain = _this.props.ishop;
+            _this.props.tick(contain);
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 

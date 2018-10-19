@@ -13,7 +13,7 @@ class Tovar extends React.Component{
    state = {
         
             catalog: this.props.catalog,
-        
+            tick: 0,
 
     }
 
@@ -37,13 +37,16 @@ class Tovar extends React.Component{
       }
 
       edit =(EO) =>{
-        let contain = this.props.ishop;
+        EO.stopPropagation()
+        let contain =this.props.ishop
+        this.props.tick(contain);
       }
 
     render () {
 
+    
 
-        
+       
 
         return (<tbody id={ this.props.code} onClick={this.color} key ={this.props.code} className="block">
         <tr id={"color"+this.props.code} onClick={this.color} className={(this.props.atr == this.props.ishop.code)?'background':null}>
@@ -59,7 +62,7 @@ class Tovar extends React.Component{
         </tr>
         </tbody>
         );
-        
+      }
     
     
 
@@ -69,7 +72,7 @@ class Tovar extends React.Component{
  
 
 
-    }
+    
 
 }
 export default Tovar;

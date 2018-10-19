@@ -12,7 +12,7 @@ class Edit extends React.Component {
 
 }
 
-    tick = (EO) => {
+    tick = (contain) => {
         this.setState({tick:1}) 
     }
 
@@ -20,7 +20,7 @@ class Edit extends React.Component {
 
         EO.stopPropagation()
         let contain = this.props.ishop
-        this.props.delete(contain);
+       
 
     }
 
@@ -28,8 +28,7 @@ class Edit extends React.Component {
     cancel = (EO) => {
         this.setState({tick:0}) 
         EO.stopPropagation()
-        let contain = this.props.ishop
-        this.props.delete(contain);
+        
 
     }
     render() {
@@ -41,10 +40,10 @@ class Edit extends React.Component {
 
                 <div>
                     <div>{"id=" + this.props.code}</div>
-                    <div>{"Name"}<input type="text" value={this.props.code}></input> </div>
-                    <div>{"Price"}<input type="text" value={this.props.cost}></input> </div>
-                    <div>{"url"}<input type="text" value={this.props.url}></input> </div>
-                    <div>{"Quantity"}<input type="text" value={this.props.kolvo}></input> </div>
+                    <div>{"Name"}<input type="text" defaultValue={this.props.code}></input> </div>
+                    <div>{"Price"}<input type="text" defaultValue={this.props.cost}></input> </div>
+                    <div>{"url"}<input type="text" defaultValue={this.props.url}></input> </div>
+                    <div>{"Quantity"}<input type="text" defaultValue={this.props.kolvo}></input> </div>
                     <div>
                         <input type="submit" value={"save"} onClick={this.save}></input>
                         <input type="submit" value={"cancel"} onClick={this.cancel}></input>
