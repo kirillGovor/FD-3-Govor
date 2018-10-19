@@ -1,12 +1,12 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import './ishop.css';
-
+import Edit from './edit'
 import Tovar from './Tovar';
 
 
 
-class ishop extends React.Component {
+class Ishop extends React.Component {
 
  
 
@@ -49,31 +49,62 @@ class ishop extends React.Component {
   render() {
    
       var catalogCode = this.state.ishop.map(v =>
-        React.createElement(Tovar,{key:v.code,
-        block:v.block,code:v.code,cost:v.cost,url:v.url,kolvo:v.kolvo,background:v.background,
-        color:this.color,
-        delete:this.delete,ishop: v,
-        
-        atr:this.state.atr,
-        }),
-      
+        <Tovar key={v.code}
+        block={v.block}
+        code={v.code}
+        cost={v.cost}
+        url={v.url}
+        kolvo={v.kolvo}
+        background={v.background}
+        color={this.color}
+        delete={this.delete}
+        ishop={v} 
+        atr={this.state.atr} /> 
       );
 
-    
-    return  React.DOM.div({ className: 'VotesBlock' },
-    React.DOM.div({ className: 'Question' }, this.props.MainText),
-    React.DOM.table({ className: 'table' }, 
-    React.DOM.tbody({ className: 'block' },
-    React.DOM.tr({ className: 'tr', },
-    React.DOM.td({ className: 'Count', key:"MainTr"+1 }, 'Название: '),
-    React.DOM.td({ className: 'Count', key:"MainTr"+2}, 'Изображение: '),
-    React.DOM.td({ className: 'Count',key:"MainTr"+3 }, 'Цена: '),
-    React.DOM.td({ className: 'Count',key:"MainTr"+4 }, 'Количество: '),
-    React.DOM.td({ className: 'Count',key:"MainTr"+5 }, 'Свойства: '),
-  ),), catalogCode),
-  
-);
+      var editContain = this.state.ishop.map(v =>
+      <Edit key={v.code}
+      block={v.block}
+      code={v.code}
+      cost={v.cost}
+      url={v.url}
+      kolvo={v.kolvo}
+      background={v.background}
+      color={this.color}
+      delete={this.delete}
+      ishop={v} 
+      atr={this.state.atr} /> 
+      );
+        
+      return (
+        <div className="VotesBlock">
+        <div className="Question">
+        {this.props.MainText}
+        </div>
+        <table className="table">
+        <tbody className="block">
+        <tr className="tr">
+        <td className="Count" key={"MainTr"+1}>Название:</td>
+        <td className="Count" key={"MainTr"+2}>Изображение:</td>
+        <td className="Count" key={"MainTr"+3}>Цена:</td>
+        <td className="Count" key={"MainTr"+4}>Количество:</td>
+        <td className="Count" key={"MainTr"+5}>Свойства:</td>
+        </tr>
+        </tbody>
+        {catalogCode}
+        </table>
+       {editContain}
+        </div>
+        
+        
+
+
+      ) ; 
+
+
+
+
   }
 
 }
-export default ishop;
+export default Ishop;

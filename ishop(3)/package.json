@@ -1,33 +1,28 @@
 {
-  "name": "myproject",
+  "name": "votesblock",
   "version": "1.0.0",
-  "description": "",
+  "description": "блок голосования",
   "main": "App.js",
   "scripts": {
-    "start": "lite-server",
     "build": ".\\node_modules\\.bin\\webpack",
-    "watch": "babel common -d bebeldist --presets es2015 -w"
+    "start": ".\\node_modules\\.bin\\lite-server"
   },
-  "dependencies": {
-    "lite-server": "^2.4.0",
-    "react": "^15.6.2",
-    "react-dom": "^15.6.2"
-  },
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
-    "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^0.28.7",
-    "extract-text-webpack-plugin": "^2.1.2",
-    "html-webpack-plugin": "^2.30.1",
-    "style-loader": "^0.18.2",
-    "webpack": "^3.12.0",
-    "webpack-config": "^7.4.0"
+    "extract-text-webpack-plugin": "^3.0.2",
+    "lite-server": "^2.3.0",
+    "webpack": "^3.8.1"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   }
 }

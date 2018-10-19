@@ -1,7 +1,7 @@
 .table {
     border: solid 1px red;
     margin:20px;
-
+    margin-left:0px;
 }
 .table .nameProduct{
     text-align: center;
