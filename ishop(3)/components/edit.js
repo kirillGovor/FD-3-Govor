@@ -34,7 +34,7 @@ class Edit extends React.Component {
     render() {
 
 
-        if (this.state.tick == 1) {
+    //    if (this.state.tick == 1) {
             return (
 
 
@@ -52,11 +52,11 @@ class Edit extends React.Component {
 
 
             );
-        }
+      //  }
 
 
 
-        else {
+      //  else {
 
             return (
                 <div>
@@ -65,7 +65,7 @@ class Edit extends React.Component {
                    
                 </div>
             );
-        }
+      //  }
 
 
 

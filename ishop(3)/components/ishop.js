@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import './ishop.css';
-import Edit from './edit'
+import Edit from './edit';
 import Tovar from './Tovar';
 
 
@@ -27,6 +27,7 @@ class Ishop extends React.Component {
       ishop: this.props.catalog,
       delited: "",
       atr:null,
+      editContain:null,
   }
 
 
@@ -45,6 +46,11 @@ class Ishop extends React.Component {
 
   }
 
+  edit =(contain)=>{
+    this.setState({editContain:contain})
+    
+
+  }
 
   render() {
    
@@ -58,10 +64,11 @@ class Ishop extends React.Component {
         background={v.background}
         color={this.color}
         delete={this.delete}
+        edit={this.edit}
         ishop={v} 
         atr={this.state.atr} /> 
       );
-
+/*
       var editContain = this.state.ishop.map(v =>
       <Edit key={v.code}
       block={v.block}
@@ -75,7 +82,7 @@ class Ishop extends React.Component {
       ishop={v} 
       atr={this.state.atr} /> 
       );
-        
+      */  
       return (
         <div className="VotesBlock">
         <div className="Question">
@@ -93,7 +100,7 @@ class Ishop extends React.Component {
         </tbody>
         {catalogCode}
         </table>
-       {editContain}
+       {this.state.editContain}
         </div>
         
         

@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import Edit from './edit';
 class Tovar extends React.Component{
 
     
 
     static propTypes = {
-      
+     // tick: propTypes.func,
         
     }
 
@@ -38,8 +38,15 @@ class Tovar extends React.Component{
 
       edit =(EO) =>{
         EO.stopPropagation()
-        let contain =this.props.ishop
-        this.props.tick(contain);
+        let contain =
+     <Edit key={this.props.ishop.code}
+      block={this.props.ishop.block}
+      code={this.props.ishop.code}
+      cost={this.props.ishop.cost}
+      url={this.props.ishop.url}
+      kolvo={this.props.ishop.kolvo}
+      ishop={this.props.ishop}  /> ;
+      this.props.edit(contain);
       }
 
     render () {
