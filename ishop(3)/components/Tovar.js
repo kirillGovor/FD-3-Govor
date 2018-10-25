@@ -33,19 +33,15 @@ class Tovar extends React.Component{
 
       color =(EO) =>{
         let contain = this.props.ishop;
-        this.props.color(contain);
+        let contain2 =this.props.ishop;
+        this.props.color(contain,contain2);
       }
 
       edit =(EO) =>{
         EO.stopPropagation()
-        let contain =
-     <Edit key={this.props.ishop.code}
-      block={this.props.ishop.block}
-      code={this.props.ishop.code}
-      cost={this.props.ishop.cost}
-      url={this.props.ishop.url}
-      kolvo={this.props.ishop.kolvo}
-      ishop={this.props.ishop}  /> ;
+        let contain =this.props.ishop;
+      console.log(contain)
+
       this.props.edit(contain);
       }
 
@@ -55,9 +51,9 @@ class Tovar extends React.Component{
 
        
 
-        return (<tbody id={ this.props.code} onClick={this.color} key ={this.props.code} className="block">
+        return (<tbody id={ this.props.block} onClick={this.color} key ={this.props.code} className="block">
         <tr id={"color"+this.props.code} onClick={this.color} className={(this.props.atr == this.props.ishop.code)?'background':null}>
-        <td id={this.props.code} className="Count">{this.props.code}</td>
+        <td id={this.props.code} className="Count">{this.props.block}</td>
         <td  id={this.props.code} ><img id={this.props.code} className="Count" src={this.props.url} width={100} height={100}></img></td>
         <td id={this.props.code} className="Count" >{this.props.cost}</td>
         <td id={this.props.code} className="Count">{this.props.kolvo}</td>

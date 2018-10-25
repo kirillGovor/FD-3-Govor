@@ -28,6 +28,8 @@ class Ishop extends React.Component {
       delited: "",
       atr:null,
       editContain:null,
+      tick:0,
+      step:0,
   }
 
 
@@ -36,21 +38,55 @@ class Ishop extends React.Component {
     let catalog = this.state.ishop.slice();
     catalog=catalog.filter(number => number!= contain);
     this.setState({ ishop: catalog },);
+    this.setState({tick:0})
   }
 
 
-  color =(contain)=>{
-
+  color =(contain,contain2)=>{
+    this.setState({tick:2})
     this.setState({atr:contain.code})
-    
+    this.setState({editContain:contain2})
 
   }
 
   edit =(contain)=>{
+    this.setState({tick:1})
     this.setState({editContain:contain})
     
 
   }
+newProduct =()=>{
+this.setState({tick:3})
+}
+exit=(contain)=>{
+  this.setState({tick:contain})
+}
+add=(contain)=>{
+  if (contain.code==""||contain.code==undefined){
+    contain.code=this.state.step;
+    this.setState({step:this.state.step+1});
+  }
+  let catalog = this.state.ishop.slice();
+  catalog.forEach(function(item, i, arr) {
+    if (item.code==contain.code){
+      arr[i]=contain;
+      
+    }
+
+    
+  });
+  this.setState({ishop:catalog});
+  console.log(this.state.ishop);
+  if (catalog!=''){
+  
+
+  }
+  else{
+ 
+ this.edit(contain);
+}
+
+}
 
   render() {
    
@@ -68,21 +104,19 @@ class Ishop extends React.Component {
         ishop={v} 
         atr={this.state.atr} /> 
       );
-/*
-      var editContain = this.state.ishop.map(v =>
-      <Edit key={v.code}
-      block={v.block}
-      code={v.code}
-      cost={v.cost}
-      url={v.url}
-      kolvo={v.kolvo}
-      background={v.background}
+
+     
+       var editContain= 
+      <Edit 
       color={this.color}
       delete={this.delete}
-      ishop={v} 
-      atr={this.state.atr} /> 
-      );
-      */  
+      exit={this.exit}
+      ishop={this.state.editContain} 
+      atr={this.state.atr}
+      tick={this.state.tick}
+      add={this.add} /> 
+      ;
+      
       return (
         <div className="VotesBlock">
         <div className="Question">
@@ -99,8 +133,10 @@ class Ishop extends React.Component {
         </tr>
         </tbody>
         {catalogCode}
-        </table>
-       {this.state.editContain}
+        </table> 
+        <div className="Newproduct"><input type="submit" value={"NewProduct"} onClick={this.newProduct}></input> </div>
+        <div>{editContain}</div>
+      
         </div>
         
         

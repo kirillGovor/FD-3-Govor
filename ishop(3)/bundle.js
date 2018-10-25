@@ -1032,17 +1032,56 @@ var Edit = function (_React$Component) {
 
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Edit.__proto__ || Object.getPrototypeOf(Edit)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
 
-            tick: 0
-
+            tick: 0,
+            value: null,
+            save: { code: _this.props.code, cost: "", url: "", kolvo: "", block: "" }
         }, _this.tick = function (contain) {
             _this.setState({ tick: 1 });
-        }, _this.save = function (EO) {
-
-            EO.stopPropagation();
-            var contain = _this.props.ishop;
         }, _this.cancel = function (EO) {
-            _this.setState({ tick: 0 });
+            var contain = 0;
             EO.stopPropagation();
+            _this.props.exit(contain);
+        }, _this.valueName = function (EO) {
+
+            var save = _this.state.save;
+            if (_this.props.tick == 3) {
+                if (EO.target.id == "name") {
+                    save.block = EO.target.value;
+                }
+                if (EO.target.id == "price") {
+                    save.cost = EO.target.value;
+                }
+                if (EO.target.id == "url") {
+                    save.url = EO.target.value;
+                }
+                if (EO.target.id == "quantity") {
+                    save.kolvo = EO.target.value;
+                }
+            } else {
+                if (EO.target.id == "name") {
+                    save.block = EO.target.value;
+                    save.code = _this.props.ishop.code;
+                }
+                if (EO.target.id == "price") {
+                    save.cost = Number(EO.target.value);
+                    save.code = _this.props.ishop.code;
+                }
+                if (EO.target.id == "url") {
+                    save.url = EO.target.value;
+                    save.code = _this.props.ishop.code;
+                }
+                if (EO.target.id == "quantity") {
+                    save.kolvo = Number(EO.target.value);
+                    save.code = _this.props.ishop.code;
+                }
+            }
+            _this.setState({ save: save });
+            console.log(_this.state.save);
+        }, _this.save = function (EO) {
+            if (_this.props.ishop.code == _this.state.save.code) {
+                console.log("fdfd");
+                _this.props.add(_this.state.save);
+            }
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
@@ -1050,66 +1089,121 @@ var Edit = function (_React$Component) {
         key: 'render',
         value: function render() {
 
-            //    if (this.state.tick == 1) {
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
+            if (this.props.tick == 1) {
+                return _react2.default.createElement(
                     'div',
                     null,
-                    "id=" + this.props.code
-                ),
-                _react2.default.createElement(
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        "id=" + this.props.ishop.code
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        "Name",
+                        _react2.default.createElement('input', { type: 'text', defaultValue: this.props.ishop.block, onChange: this.valueName, id: "name" }),
+                        ' '
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        "Price",
+                        _react2.default.createElement('input', { type: 'text', defaultValue: this.props.ishop.cost, onChange: this.valueName, id: "price" }),
+                        ' '
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        "url",
+                        _react2.default.createElement('input', { type: 'text', defaultValue: this.props.ishop.url, onChange: this.valueName, id: "url" }),
+                        ' '
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        "Quantity",
+                        _react2.default.createElement('input', { type: 'text', defaultValue: this.props.ishop.kolvo, onChange: this.valueName, id: "quantity" }),
+                        ' '
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        _react2.default.createElement('input', { type: 'submit', value: "save", onClick: this.save }),
+                        _react2.default.createElement('input', { type: 'submit', value: "cancel", onClick: this.cancel })
+                    )
+                );
+            }
+            if (this.props.tick == 2) {
+                return _react2.default.createElement(
                     'div',
                     null,
-                    "Name",
-                    _react2.default.createElement('input', { type: 'text', defaultValue: this.props.code }),
-                    ' '
-                ),
-                _react2.default.createElement(
-                    'div',
-                    null,
-                    "Price",
-                    _react2.default.createElement('input', { type: 'text', defaultValue: this.props.cost }),
-                    ' '
-                ),
-                _react2.default.createElement(
-                    'div',
-                    null,
-                    "url",
-                    _react2.default.createElement('input', { type: 'text', defaultValue: this.props.url }),
-                    ' '
-                ),
-                _react2.default.createElement(
-                    'div',
-                    null,
-                    "Quantity",
-                    _react2.default.createElement('input', { type: 'text', defaultValue: this.props.kolvo }),
-                    ' '
-                ),
-                _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement('input', { type: 'submit', value: "save", onClick: this.save }),
-                    _react2.default.createElement('input', { type: 'submit', value: "cancel", onClick: this.cancel })
-                )
-            );
-            //  }
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        _react2.default.createElement(
+                            'h1',
+                            null,
+                            "id:" + this.props.ishop.code
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        "Name: " + this.props.ishop.block,
+                        ' '
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        "Price" + this.props.ishop.cost
+                    )
+                );
+            }
+            if (this.props.tick == 3) {
 
-
-            //  else {
-
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
+                return _react2.default.createElement(
                     'div',
-                    { className: 'newProduct', key: "newProduct" },
-                    _react2.default.createElement('input', { type: 'submit', value: 'new product', onClick: this.tick })
-                )
-            );
-            //  }
+                    null,
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        "Name",
+                        _react2.default.createElement('input', { type: 'text', defaultValue: "", onChange: this.valueName, id: "name" }),
+                        ' '
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        "Price",
+                        _react2.default.createElement('input', { type: 'text', defaultValue: "", onChange: this.valueName, id: "price" }),
+                        ' '
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        "url",
+                        _react2.default.createElement('input', { type: 'text', defaultValue: "", onChange: this.valueName, id: "url" }),
+                        ' '
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        "Quantity",
+                        _react2.default.createElement('input', { type: 'text', defaultValue: "", onChange: this.valueName, id: "quantity" }),
+                        ' '
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        _react2.default.createElement('input', { type: 'submit', value: "save", onClick: this.save }),
+                        _react2.default.createElement('input', { type: 'submit', value: "cancel", onClick: this.cancel })
+                    )
+                );
+            } else {
 
+                return _react2.default.createElement('div', null);
+            }
         }
     }]);
 
@@ -21369,18 +21463,44 @@ var Ishop = function (_React$Component) {
       ishop: _this.props.catalog,
       delited: "",
       atr: null,
-      editContain: null
+      editContain: null,
+      tick: 0,
+      step: 0
     }, _this.delete = function (contain) {
       var catalog = _this.state.ishop.slice();
       catalog = catalog.filter(function (number) {
         return number != contain;
       });
       _this.setState({ ishop: catalog });
-    }, _this.color = function (contain) {
-
+      _this.setState({ tick: 0 });
+    }, _this.color = function (contain, contain2) {
+      _this.setState({ tick: 2 });
       _this.setState({ atr: contain.code });
+      _this.setState({ editContain: contain2 });
     }, _this.edit = function (contain) {
+      _this.setState({ tick: 1 });
       _this.setState({ editContain: contain });
+    }, _this.newProduct = function () {
+      _this.setState({ tick: 3 });
+    }, _this.exit = function (contain) {
+      _this.setState({ tick: contain });
+    }, _this.add = function (contain) {
+      if (contain.code == "" || contain.code == undefined) {
+        contain.code = _this.state.step;
+        _this.setState({ step: _this.state.step + 1 });
+      }
+      var catalog = _this.state.ishop.slice();
+      catalog.forEach(function (item, i, arr) {
+        if (item.code == contain.code) {
+          arr[i] = contain;
+        }
+      });
+      _this.setState({ ishop: catalog });
+      console.log(_this.state.ishop);
+      if (catalog != '') {} else {
+
+        _this.edit(contain);
+      }
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -21403,21 +21523,16 @@ var Ishop = function (_React$Component) {
           ishop: v,
           atr: _this2.state.atr });
       });
-      /*
-            var editContain = this.state.ishop.map(v =>
-            <Edit key={v.code}
-            block={v.block}
-            code={v.code}
-            cost={v.cost}
-            url={v.url}
-            kolvo={v.kolvo}
-            background={v.background}
-            color={this.color}
-            delete={this.delete}
-            ishop={v} 
-            atr={this.state.atr} /> 
-            );
-            */
+
+      var editContain = _react2.default.createElement(_edit2.default, {
+        color: this.color,
+        'delete': this.delete,
+        exit: this.exit,
+        ishop: this.state.editContain,
+        atr: this.state.atr,
+        tick: this.state.tick,
+        add: this.add });
+
       return _react2.default.createElement(
         'div',
         { className: 'VotesBlock' },
@@ -21464,7 +21579,17 @@ var Ishop = function (_React$Component) {
           ),
           catalogCode
         ),
-        this.state.editContain
+        _react2.default.createElement(
+          'div',
+          { className: 'Newproduct' },
+          _react2.default.createElement('input', { type: 'submit', value: "NewProduct", onClick: this.newProduct }),
+          ' '
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          editContain
+        )
       );
     }
   }]);
@@ -21548,16 +21673,13 @@ var Tovar = function (_React$Component) {
             _this.props.delete(contain);
         }, _this.color = function (EO) {
             var contain = _this.props.ishop;
-            _this.props.color(contain);
+            var contain2 = _this.props.ishop;
+            _this.props.color(contain, contain2);
         }, _this.edit = function (EO) {
             EO.stopPropagation();
-            var contain = _react2.default.createElement(_edit2.default, { key: _this.props.ishop.code,
-                block: _this.props.ishop.block,
-                code: _this.props.ishop.code,
-                cost: _this.props.ishop.cost,
-                url: _this.props.ishop.url,
-                kolvo: _this.props.ishop.kolvo,
-                ishop: _this.props.ishop });
+            var contain = _this.props.ishop;
+            console.log(contain);
+
             _this.props.edit(contain);
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
@@ -21568,14 +21690,14 @@ var Tovar = function (_React$Component) {
 
             return _react2.default.createElement(
                 'tbody',
-                { id: this.props.code, onClick: this.color, key: this.props.code, className: 'block' },
+                { id: this.props.block, onClick: this.color, key: this.props.code, className: 'block' },
                 _react2.default.createElement(
                     'tr',
                     { id: "color" + this.props.code, onClick: this.color, className: this.props.atr == this.props.ishop.code ? 'background' : null },
                     _react2.default.createElement(
                         'td',
                         { id: this.props.code, className: 'Count' },
-                        this.props.code
+                        this.props.block
                     ),
                     _react2.default.createElement(
                         'td',
