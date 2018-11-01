@@ -5,11 +5,19 @@ import PropTypes from 'prop-types';
 
 class Edit extends React.Component {
 
+  
     state = {
 
         tick: 0,
         value: null,
-        save: { code: this.props.code, cost: "", url: "", kolvo: "", block: "" }
+        save: { code: this.props.code, cost: "", url: "", kolvo: "", block: "" },
+
+      value:this.props.ishop,
+
+        NameValue:this.props.block,
+        PriceValue:this.props.cost,
+        UrlValue:this.props.url,
+        QuantityValue:this.props.kolvo,
     }
 
     tick = (contain) => {
@@ -26,13 +34,32 @@ class Edit extends React.Component {
 
     }
     valueName = (EO) => {
+        console.log(this.state.NameValue,this.state.PriceValue,this.state.UrlValue,this.state.QuantityValue)
+        switch(EO.target.id){
 
+            case "name":
+            this.setState({NameValue: EO.target.value});
+            break;
 
+            case "price":
+            this.setState({PriceValue: EO.target.value});
+            break;
+
+            case "url":
+            this.setState({UrlValue: EO.target.value});
+            break;
+
+            case "quantity":
+            this.setState({QuantityValue: EO.target.value});
+            break;
+
+        }
+/*
         let save = this.state.save;
         if (this.props.tick == 3) {
             if (EO.target.id == "name") {
                 save.block = EO.target.value;
-
+               
             }
             if (EO.target.id == "price") {
                 save.cost = EO.target.value;
@@ -67,6 +94,7 @@ class Edit extends React.Component {
         }
         this.setState({ save: save });
         console.log(this.state.save)
+        */
     }
     save = (EO) => {
         if (this.props.ishop.code == this.state.save.code) {
@@ -78,17 +106,18 @@ class Edit extends React.Component {
 
 
         if (this.props.tick == 1) {
+          
             return (
-
+                
 
                 <div>
-                    <div>{"id=" + this.props.ishop.code}</div>
-                    <div>{"Name"}<input type="text" defaultValue={this.props.ishop.block} onChange={this.valueName} id={"name"}></input> </div>
-                    <div>{"Price"}<input type="text" defaultValue={this.props.ishop.cost} onChange={this.valueName} id={"price"}></input> </div>
-                    <div>{"url"}<input type="text" defaultValue={this.props.ishop.url} onChange={this.valueName} id={"url"}></input> </div>
-                    <div>{"Quantity"}<input type="text" defaultValue={this.props.ishop.kolvo} onChange={this.valueName} id={"quantity"}></input> </div>
+                    <div>{"id=" + this.props.ishop.code }</div>
+                    <div>{"Name"}<input type="text"     value={this.state.NameValue}      onChange={this.valueName} id={"name"}></input> </div>
+                    <div>{"Price"}<input type="text"    value={this.state.PriceValue}    onChange={this.valueName} id={"price"}></input> </div>
+                    <div>{"url"}<input type="text"      value={this.state.UrlValue}      onChange={this.valueName} id={"url"}></input> </div>
+                    <div>{"Quantity"}<input type="text" value={this.state.QuantityValue} onChange={this.valueName} id={"quantity"}></input> </div>
                     <div>
-                        <input type="submit" value={"save"} onClick={this.save}></input>
+                        <input type="submit" value={"save"}   onClick={this.save}></input>
                         <input type="submit" value={"cancel"} onClick={this.cancel}></input>
                     </div>
                 </div>

@@ -30,6 +30,11 @@ class Ishop extends React.Component {
       editContain:null,
       tick:0,
       step:0,
+      
+      nameValue:"",
+      priceValue:"",
+      urlValue:"",
+      quantityValue:"",
   }
 
 
@@ -46,13 +51,16 @@ class Ishop extends React.Component {
     this.setState({tick:2})
     this.setState({atr:contain.code})
     this.setState({editContain:contain2})
-
+    
   }
 
   edit =(contain)=>{
     this.setState({tick:1})
     this.setState({editContain:contain})
-    
+    this.setState({nameValue:contain.block})
+    this.setState({priceValue:contain.cost})
+    this.setState({urlValue:contain.url})
+    this.setState({quantityValue:contain.kolvo})
 
   }
 newProduct =()=>{
@@ -114,7 +122,12 @@ add=(contain)=>{
       ishop={this.state.editContain} 
       atr={this.state.atr}
       tick={this.state.tick}
-      add={this.add} /> 
+      add={this.add}
+      block={this.state.nameValue}
+      cost={this.state.priceValue}
+      url={this.state.urlValue}
+      kolvo={this.state.quantityValue}
+      /> 
       ;
       
       return (

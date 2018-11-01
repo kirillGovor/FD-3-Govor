@@ -1010,6 +1010,8 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -1020,7 +1022,7 @@ var Edit = function (_React$Component) {
     _inherits(Edit, _React$Component);
 
     function Edit() {
-        var _ref;
+        var _ref, _this$state;
 
         var _temp, _this, _ret;
 
@@ -1030,53 +1032,80 @@ var Edit = function (_React$Component) {
             args[_key] = arguments[_key];
         }
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Edit.__proto__ || Object.getPrototypeOf(Edit)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Edit.__proto__ || Object.getPrototypeOf(Edit)).call.apply(_ref, [this].concat(args))), _this), _this.state = (_this$state = {
 
             tick: 0,
             value: null,
             save: { code: _this.props.code, cost: "", url: "", kolvo: "", block: "" }
-        }, _this.tick = function (contain) {
+
+        }, _defineProperty(_this$state, 'value', _this.props.ishop), _defineProperty(_this$state, 'NameValue', _this.props.block), _defineProperty(_this$state, 'PriceValue', _this.props.cost), _defineProperty(_this$state, 'UrlValue', _this.props.url), _defineProperty(_this$state, 'QuantityValue', _this.props.kolvo), _this$state), _this.tick = function (contain) {
             _this.setState({ tick: 1 });
         }, _this.cancel = function (EO) {
             var contain = 0;
             EO.stopPropagation();
             _this.props.exit(contain);
         }, _this.valueName = function (EO) {
+            console.log(_this.state.NameValue, _this.state.PriceValue, _this.state.UrlValue, _this.state.QuantityValue);
+            switch (EO.target.id) {
 
-            var save = _this.state.save;
-            if (_this.props.tick == 3) {
-                if (EO.target.id == "name") {
-                    save.block = EO.target.value;
-                }
-                if (EO.target.id == "price") {
-                    save.cost = EO.target.value;
-                }
-                if (EO.target.id == "url") {
-                    save.url = EO.target.value;
-                }
-                if (EO.target.id == "quantity") {
-                    save.kolvo = EO.target.value;
-                }
-            } else {
-                if (EO.target.id == "name") {
-                    save.block = EO.target.value;
-                    save.code = _this.props.ishop.code;
-                }
-                if (EO.target.id == "price") {
-                    save.cost = Number(EO.target.value);
-                    save.code = _this.props.ishop.code;
-                }
-                if (EO.target.id == "url") {
-                    save.url = EO.target.value;
-                    save.code = _this.props.ishop.code;
-                }
-                if (EO.target.id == "quantity") {
-                    save.kolvo = Number(EO.target.value);
-                    save.code = _this.props.ishop.code;
-                }
+                case "name":
+                    _this.setState({ NameValue: EO.target.value });
+                    break;
+
+                case "price":
+                    _this.setState({ PriceValue: EO.target.value });
+                    break;
+
+                case "url":
+                    _this.setState({ UrlValue: EO.target.value });
+                    break;
+
+                case "quantity":
+                    _this.setState({ QuantityValue: EO.target.value });
+                    break;
+
             }
-            _this.setState({ save: save });
-            console.log(_this.state.save);
+            /*
+                    let save = this.state.save;
+                    if (this.props.tick == 3) {
+                        if (EO.target.id == "name") {
+                            save.block = EO.target.value;
+                           
+                        }
+                        if (EO.target.id == "price") {
+                            save.cost = EO.target.value;
+            
+                        }
+                        if (EO.target.id == "url") {
+                            save.url = EO.target.value;
+            
+                        }
+                        if (EO.target.id == "quantity") {
+                            save.kolvo = EO.target.value;
+            
+                        }
+                    }
+                    else {
+                        if (EO.target.id == "name") {
+                            save.block = EO.target.value;
+                            save.code = this.props.ishop.code;
+                        }
+                        if (EO.target.id == "price") {
+                            save.cost = Number(EO.target.value);
+                            save.code = this.props.ishop.code;
+                        }
+                        if (EO.target.id == "url") {
+                            save.url = EO.target.value;
+                            save.code = this.props.ishop.code;
+                        }
+                        if (EO.target.id == "quantity") {
+                            save.kolvo = Number(EO.target.value);
+                            save.code = this.props.ishop.code;
+                        }
+                    }
+                    this.setState({ save: save });
+                    console.log(this.state.save)
+                    */
         }, _this.save = function (EO) {
             if (_this.props.ishop.code == _this.state.save.code) {
                 console.log("fdfd");
@@ -1090,6 +1119,7 @@ var Edit = function (_React$Component) {
         value: function render() {
 
             if (this.props.tick == 1) {
+
                 return _react2.default.createElement(
                     'div',
                     null,
@@ -1102,28 +1132,28 @@ var Edit = function (_React$Component) {
                         'div',
                         null,
                         "Name",
-                        _react2.default.createElement('input', { type: 'text', defaultValue: this.props.ishop.block, onChange: this.valueName, id: "name" }),
+                        _react2.default.createElement('input', { type: 'text', value: this.state.NameValue, onChange: this.valueName, id: "name" }),
                         ' '
                     ),
                     _react2.default.createElement(
                         'div',
                         null,
                         "Price",
-                        _react2.default.createElement('input', { type: 'text', defaultValue: this.props.ishop.cost, onChange: this.valueName, id: "price" }),
+                        _react2.default.createElement('input', { type: 'text', value: this.state.PriceValue, onChange: this.valueName, id: "price" }),
                         ' '
                     ),
                     _react2.default.createElement(
                         'div',
                         null,
                         "url",
-                        _react2.default.createElement('input', { type: 'text', defaultValue: this.props.ishop.url, onChange: this.valueName, id: "url" }),
+                        _react2.default.createElement('input', { type: 'text', value: this.state.UrlValue, onChange: this.valueName, id: "url" }),
                         ' '
                     ),
                     _react2.default.createElement(
                         'div',
                         null,
                         "Quantity",
-                        _react2.default.createElement('input', { type: 'text', defaultValue: this.props.ishop.kolvo, onChange: this.valueName, id: "quantity" }),
+                        _react2.default.createElement('input', { type: 'text', value: this.state.QuantityValue, onChange: this.valueName, id: "quantity" }),
                         ' '
                     ),
                     _react2.default.createElement(
@@ -21465,7 +21495,12 @@ var Ishop = function (_React$Component) {
       atr: null,
       editContain: null,
       tick: 0,
-      step: 0
+      step: 0,
+
+      nameValue: "",
+      priceValue: "",
+      urlValue: "",
+      quantityValue: ""
     }, _this.delete = function (contain) {
       var catalog = _this.state.ishop.slice();
       catalog = catalog.filter(function (number) {
@@ -21480,6 +21515,10 @@ var Ishop = function (_React$Component) {
     }, _this.edit = function (contain) {
       _this.setState({ tick: 1 });
       _this.setState({ editContain: contain });
+      _this.setState({ nameValue: contain.block });
+      _this.setState({ priceValue: contain.cost });
+      _this.setState({ urlValue: contain.url });
+      _this.setState({ quantityValue: contain.kolvo });
     }, _this.newProduct = function () {
       _this.setState({ tick: 3 });
     }, _this.exit = function (contain) {
@@ -21531,7 +21570,12 @@ var Ishop = function (_React$Component) {
         ishop: this.state.editContain,
         atr: this.state.atr,
         tick: this.state.tick,
-        add: this.add });
+        add: this.add,
+        block: this.state.nameValue,
+        cost: this.state.priceValue,
+        url: this.state.urlValue,
+        kolvo: this.state.quantityValue
+      });
 
       return _react2.default.createElement(
         'div',
