@@ -1021,30 +1021,32 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Edit = function (_React$Component) {
     _inherits(Edit, _React$Component);
 
-    function Edit() {
-        var _ref, _this$state;
-
-        var _temp, _this, _ret;
+    function Edit(props) {
+        var _this$state;
 
         _classCallCheck(this, Edit);
 
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-        }
+        var _this = _possibleConstructorReturn(this, (Edit.__proto__ || Object.getPrototypeOf(Edit)).call(this, props));
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Edit.__proto__ || Object.getPrototypeOf(Edit)).call.apply(_ref, [this].concat(args))), _this), _this.state = (_this$state = {
+        _this.state = (_this$state = {
 
             tick: 0,
             value: null,
             save: { code: _this.props.code, cost: "", url: "", kolvo: "", block: "" }
 
-        }, _defineProperty(_this$state, 'value', _this.props.ishop), _defineProperty(_this$state, 'NameValue', _this.props.block), _defineProperty(_this$state, 'PriceValue', _this.props.cost), _defineProperty(_this$state, 'UrlValue', _this.props.url), _defineProperty(_this$state, 'QuantityValue', _this.props.kolvo), _this$state), _this.tick = function (contain) {
+        }, _defineProperty(_this$state, 'value', _this.props.ishop), _defineProperty(_this$state, 'PriceValue', _this.props.cost), _defineProperty(_this$state, 'UrlValue', _this.props.url), _defineProperty(_this$state, 'QuantityValue', _this.props.kolvo), _this$state);
+
+        _this.tick = function (contain) {
             _this.setState({ tick: 1 });
-        }, _this.cancel = function (EO) {
+        };
+
+        _this.cancel = function (EO) {
             var contain = 0;
             EO.stopPropagation();
             _this.props.exit(contain);
-        }, _this.valueName = function (EO) {
+        };
+
+        _this.valueName = function (EO) {
             console.log(_this.state.NameValue, _this.state.PriceValue, _this.state.UrlValue, _this.state.QuantityValue);
             switch (EO.target.id) {
 
@@ -1065,53 +1067,18 @@ var Edit = function (_React$Component) {
                     break;
 
             }
-            /*
-                    let save = this.state.save;
-                    if (this.props.tick == 3) {
-                        if (EO.target.id == "name") {
-                            save.block = EO.target.value;
-                           
-                        }
-                        if (EO.target.id == "price") {
-                            save.cost = EO.target.value;
-            
-                        }
-                        if (EO.target.id == "url") {
-                            save.url = EO.target.value;
-            
-                        }
-                        if (EO.target.id == "quantity") {
-                            save.kolvo = EO.target.value;
-            
-                        }
-                    }
-                    else {
-                        if (EO.target.id == "name") {
-                            save.block = EO.target.value;
-                            save.code = this.props.ishop.code;
-                        }
-                        if (EO.target.id == "price") {
-                            save.cost = Number(EO.target.value);
-                            save.code = this.props.ishop.code;
-                        }
-                        if (EO.target.id == "url") {
-                            save.url = EO.target.value;
-                            save.code = this.props.ishop.code;
-                        }
-                        if (EO.target.id == "quantity") {
-                            save.kolvo = Number(EO.target.value);
-                            save.code = this.props.ishop.code;
-                        }
-                    }
-                    this.setState({ save: save });
-                    console.log(this.state.save)
-                    */
-        }, _this.save = function (EO) {
+        };
+
+        _this.save = function (EO) {
             if (_this.props.ishop.code == _this.state.save.code) {
                 console.log("fdfd");
                 _this.props.add(_this.state.save);
             }
-        }, _temp), _possibleConstructorReturn(_this, _ret);
+        };
+
+        _this.state = { NameValue: props.block };
+
+        return _this;
     }
 
     _createClass(Edit, [{
@@ -21497,10 +21464,10 @@ var Ishop = function (_React$Component) {
       tick: 0,
       step: 0,
 
-      nameValue: "",
-      priceValue: "",
-      urlValue: "",
-      quantityValue: ""
+      nameValue: null,
+      priceValue: null,
+      urlValue: null,
+      quantityValue: null
     }, _this.delete = function (contain) {
       var catalog = _this.state.ishop.slice();
       catalog = catalog.filter(function (number) {

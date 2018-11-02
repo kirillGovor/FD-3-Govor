@@ -31,10 +31,10 @@ class Ishop extends React.Component {
       tick:0,
       step:0,
       
-      nameValue:"",
-      priceValue:"",
-      urlValue:"",
-      quantityValue:"",
+      nameValue:null,
+      priceValue:null,
+      urlValue:null,
+      quantityValue:null,
   }
 
 
@@ -63,6 +63,11 @@ class Ishop extends React.Component {
     this.setState({quantityValue:contain.kolvo})
 
   }
+
+
+
+
+  
 newProduct =()=>{
 this.setState({tick:3})
 }

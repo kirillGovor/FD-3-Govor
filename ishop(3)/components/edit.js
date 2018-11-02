@@ -5,7 +5,11 @@ import PropTypes from 'prop-types';
 
 class Edit extends React.Component {
 
-  
+    constructor(props) {
+        super(props)
+       this.state={NameValue:props.block};
+      
+      }
     state = {
 
         tick: 0,
@@ -14,7 +18,7 @@ class Edit extends React.Component {
 
       value:this.props.ishop,
 
-        NameValue:this.props.block,
+       // NameValue:this.props.block,
         PriceValue:this.props.cost,
         UrlValue:this.props.url,
         QuantityValue:this.props.kolvo,
@@ -54,47 +58,7 @@ class Edit extends React.Component {
             break;
 
         }
-/*
-        let save = this.state.save;
-        if (this.props.tick == 3) {
-            if (EO.target.id == "name") {
-                save.block = EO.target.value;
-               
-            }
-            if (EO.target.id == "price") {
-                save.cost = EO.target.value;
 
-            }
-            if (EO.target.id == "url") {
-                save.url = EO.target.value;
-
-            }
-            if (EO.target.id == "quantity") {
-                save.kolvo = EO.target.value;
-
-            }
-        }
-        else {
-            if (EO.target.id == "name") {
-                save.block = EO.target.value;
-                save.code = this.props.ishop.code;
-            }
-            if (EO.target.id == "price") {
-                save.cost = Number(EO.target.value);
-                save.code = this.props.ishop.code;
-            }
-            if (EO.target.id == "url") {
-                save.url = EO.target.value;
-                save.code = this.props.ishop.code;
-            }
-            if (EO.target.id == "quantity") {
-                save.kolvo = Number(EO.target.value);
-                save.code = this.props.ishop.code;
-            }
-        }
-        this.setState({ save: save });
-        console.log(this.state.save)
-        */
     }
     save = (EO) => {
         if (this.props.ishop.code == this.state.save.code) {
@@ -102,11 +66,14 @@ class Edit extends React.Component {
             this.props.add(this.state.save);
         }
     }
+
+   
+
     render() {
 
 
         if (this.props.tick == 1) {
-          
+         
             return (
                 
 
