@@ -10,6 +10,14 @@ class Edit extends React.Component {
        this.state={NameValue:props.block};
       
       }
+      componentWillReceiveProps() {
+        this.setState({ 
+            NameValue:this.props.block,
+            PriceValue:this.props.cost,
+            UrlValue:this.props.url,
+            QuantityValue:this.props.kolvo,});
+      }
+    
     state = {
 
         tick: 0,
@@ -18,10 +26,10 @@ class Edit extends React.Component {
 
       value:this.props.ishop,
 
-       // NameValue:this.props.block,
-        PriceValue:this.props.cost,
-        UrlValue:this.props.url,
-        QuantityValue:this.props.kolvo,
+       NameValue:"",
+        PriceValue:"",
+        UrlValue:"",
+        QuantityValue:"",
     }
 
     tick = (contain) => {

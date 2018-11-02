@@ -1034,7 +1034,7 @@ var Edit = function (_React$Component) {
             value: null,
             save: { code: _this.props.code, cost: "", url: "", kolvo: "", block: "" }
 
-        }, _defineProperty(_this$state, 'value', _this.props.ishop), _defineProperty(_this$state, 'PriceValue', _this.props.cost), _defineProperty(_this$state, 'UrlValue', _this.props.url), _defineProperty(_this$state, 'QuantityValue', _this.props.kolvo), _this$state);
+        }, _defineProperty(_this$state, 'value', _this.props.ishop), _defineProperty(_this$state, 'NameValue', ""), _defineProperty(_this$state, 'PriceValue', ""), _defineProperty(_this$state, 'UrlValue', ""), _defineProperty(_this$state, 'QuantityValue', ""), _this$state);
 
         _this.tick = function (contain) {
             _this.setState({ tick: 1 });
@@ -1082,6 +1082,15 @@ var Edit = function (_React$Component) {
     }
 
     _createClass(Edit, [{
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps() {
+            this.setState({
+                NameValue: this.props.block,
+                PriceValue: this.props.cost,
+                UrlValue: this.props.url,
+                QuantityValue: this.props.kolvo });
+        }
+    }, {
         key: 'render',
         value: function render() {
 
@@ -21464,10 +21473,10 @@ var Ishop = function (_React$Component) {
       tick: 0,
       step: 0,
 
-      nameValue: null,
-      priceValue: null,
-      urlValue: null,
-      quantityValue: null
+      nameValue: "",
+      priceValue: "",
+      urlValue: "",
+      quantityValue: ""
     }, _this.delete = function (contain) {
       var catalog = _this.state.ishop.slice();
       catalog = catalog.filter(function (number) {

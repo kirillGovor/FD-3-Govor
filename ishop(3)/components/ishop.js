@@ -31,10 +31,10 @@ class Ishop extends React.Component {
       tick:0,
       step:0,
       
-      nameValue:null,
-      priceValue:null,
-      urlValue:null,
-      quantityValue:null,
+      nameValue:"",
+      priceValue:"",
+      urlValue:"",
+      quantityValue:"",
   }
 
 
