@@ -35,6 +35,7 @@ class Ishop extends React.Component {
       priceValue:"",
       urlValue:"",
       quantityValue:"",
+      codeValue:"",
   }
 
 
@@ -61,11 +62,22 @@ class Ishop extends React.Component {
     this.setState({priceValue:contain.cost})
     this.setState({urlValue:contain.url})
     this.setState({quantityValue:contain.kolvo})
-
+    this.setState({codeValue:contain.code})
+    console.log(contain)
   }
 
 
-
+  NewProductishop = (Name,price,url,quantity)=>{
+    this.state.ishop.push(
+      {block:Name, 
+       code:Name,
+      cost:price,
+      url:url,
+      kolvo:quantity,
+      }
+    );
+    this.setState({ishop:this.state.ishop})
+  }
 
   
 newProduct =()=>{
@@ -74,15 +86,21 @@ this.setState({tick:3})
 exit=(contain)=>{
   this.setState({tick:contain})
 }
-add=(contain)=>{
-  if (contain.code==""||contain.code==undefined){
-    contain.code=this.state.step;
-    this.setState({step:this.state.step+1});
-  }
+
+
+
+add=(Name,price,url,quantity,id)=>{
+ 
   let catalog = this.state.ishop.slice();
   catalog.forEach(function(item, i, arr) {
-    if (item.code==contain.code){
-      arr[i]=contain;
+    if (item.code==id){
+      arr[i]={
+        block:Name, 
+        code:id,
+       cost:price,
+       url:url,
+       kolvo:quantity,
+       };
       
     }
 
@@ -90,14 +108,6 @@ add=(contain)=>{
   });
   this.setState({ishop:catalog});
   console.log(this.state.ishop);
-  if (catalog!=''){
-  
-
-  }
-  else{
- 
- this.edit(contain);
-}
 
 }
 
@@ -121,6 +131,7 @@ add=(contain)=>{
      
        var editContain= 
       <Edit 
+      NewProductishop={this.NewProductishop}
       color={this.color}
       delete={this.delete}
       exit={this.exit}
@@ -132,6 +143,7 @@ add=(contain)=>{
       cost={this.state.priceValue}
       url={this.state.urlValue}
       kolvo={this.state.quantityValue}
+      code={this.state.codeValue}
       /> 
       ;
       

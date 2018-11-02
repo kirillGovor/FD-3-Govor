@@ -40,7 +40,7 @@ class Tovar extends React.Component{
       edit =(EO) =>{
         EO.stopPropagation()
         let contain =this.props.ishop;
-      console.log(contain)
+      
 
       this.props.edit(contain);
       }

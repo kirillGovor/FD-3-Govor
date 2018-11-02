@@ -1070,10 +1070,11 @@ var Edit = function (_React$Component) {
         };
 
         _this.save = function (EO) {
-            if (_this.props.ishop.code == _this.state.save.code) {
-                console.log("fdfd");
-                _this.props.add(_this.state.save);
-            }
+            _this.props.add(_this.state.NameValue, _this.state.PriceValue, _this.state.UrlValue, _this.state.QuantityValue, _this.state.codeValue);
+        };
+
+        _this.newProduct = function () {
+            _this.props.NewProductishop(_this.state.NameValue, _this.state.PriceValue, _this.state.UrlValue, _this.state.QuantityValue);
         };
 
         _this.state = { NameValue: props.block };
@@ -1089,7 +1090,9 @@ var Edit = function (_React$Component) {
                 NameValue: this.props.block,
                 PriceValue: this.props.cost,
                 UrlValue: this.props.url,
-                QuantityValue: this.props.kolvo });
+                QuantityValue: this.props.kolvo,
+                codeValue: this.props.code
+            });
         }
     }, {
         key: 'render',
@@ -1203,7 +1206,7 @@ var Edit = function (_React$Component) {
                     _react2.default.createElement(
                         'div',
                         null,
-                        _react2.default.createElement('input', { type: 'submit', value: "add", onClick: this.save }),
+                        _react2.default.createElement('input', { type: 'submit', value: "add", onClick: this.newProduct }),
                         _react2.default.createElement('input', { type: 'submit', value: "cancel", onClick: this.cancel })
                     )
                 );
@@ -21477,7 +21480,8 @@ var Ishop = function (_React$Component) {
       nameValue: "",
       priceValue: "",
       urlValue: "",
-      quantityValue: ""
+      quantityValue: "",
+      codeValue: ""
     }, _this.delete = function (contain) {
       var catalog = _this.state.ishop.slice();
       catalog = catalog.filter(function (number) {
@@ -21496,27 +21500,36 @@ var Ishop = function (_React$Component) {
       _this.setState({ priceValue: contain.cost });
       _this.setState({ urlValue: contain.url });
       _this.setState({ quantityValue: contain.kolvo });
+      _this.setState({ codeValue: contain.code });
+      console.log(contain);
+    }, _this.NewProductishop = function (Name, price, url, quantity) {
+      _this.state.ishop.push({ block: Name,
+        code: Name,
+        cost: price,
+        url: url,
+        kolvo: quantity
+      });
+      _this.setState({ ishop: _this.state.ishop });
     }, _this.newProduct = function () {
       _this.setState({ tick: 3 });
     }, _this.exit = function (contain) {
       _this.setState({ tick: contain });
-    }, _this.add = function (contain) {
-      if (contain.code == "" || contain.code == undefined) {
-        contain.code = _this.state.step;
-        _this.setState({ step: _this.state.step + 1 });
-      }
+    }, _this.add = function (Name, price, url, quantity, id) {
+
       var catalog = _this.state.ishop.slice();
       catalog.forEach(function (item, i, arr) {
-        if (item.code == contain.code) {
-          arr[i] = contain;
+        if (item.code == id) {
+          arr[i] = {
+            block: Name,
+            code: id,
+            cost: price,
+            url: url,
+            kolvo: quantity
+          };
         }
       });
       _this.setState({ ishop: catalog });
       console.log(_this.state.ishop);
-      if (catalog != '') {} else {
-
-        _this.edit(contain);
-      }
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -21541,6 +21554,7 @@ var Ishop = function (_React$Component) {
       });
 
       var editContain = _react2.default.createElement(_edit2.default, {
+        NewProductishop: this.NewProductishop,
         color: this.color,
         'delete': this.delete,
         exit: this.exit,
@@ -21551,7 +21565,8 @@ var Ishop = function (_React$Component) {
         block: this.state.nameValue,
         cost: this.state.priceValue,
         url: this.state.urlValue,
-        kolvo: this.state.quantityValue
+        kolvo: this.state.quantityValue,
+        code: this.state.codeValue
       });
 
       return _react2.default.createElement(
@@ -21699,7 +21714,6 @@ var Tovar = function (_React$Component) {
         }, _this.edit = function (EO) {
             EO.stopPropagation();
             var contain = _this.props.ishop;
-            console.log(contain);
 
             _this.props.edit(contain);
         }, _temp), _possibleConstructorReturn(_this, _ret);

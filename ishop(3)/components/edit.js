@@ -17,7 +17,9 @@ class Edit extends React.Component {
             NameValue:this.props.block,
             PriceValue:this.props.cost,
             UrlValue:this.props.url,
-            QuantityValue:this.props.kolvo,});
+            QuantityValue:this.props.kolvo,
+            codeValue:this.props.code,
+        });
       }
     
     state = {
@@ -71,13 +73,12 @@ class Edit extends React.Component {
 
     }
     save = (EO) => {
-        if (this.props.ishop.code == this.state.save.code) {
-            console.log("fdfd")
-            this.props.add(this.state.save);
-        }
+        this.props.add(this.state.NameValue,this.state.PriceValue,this.state.UrlValue,this.state.QuantityValue,this.state.codeValue);
     }
 
-   
+    newProduct = () => {
+        this.props.NewProductishop(this.state.NameValue,this.state.PriceValue,this.state.UrlValue,this.state.QuantityValue);
+    }
 
     render() {
 
@@ -121,7 +122,7 @@ class Edit extends React.Component {
                     <div>{"url"}<input type="text"      value={this.state.UrlValue}      onChange={this.valueName} id={"url"}></input>      </div>
                     <div>{"Quantity"}<input type="text" value={this.state.QuantityValue} onChange={this.valueName} id={"quantity"}></input> </div>
                     <div>
-                        <input type="submit" value={"add"}   onClick={this.save}></input>
+                        <input type="submit" value={"add"}   onClick={this.newProduct}></input>
                         <input type="submit" value={"cancel"} onClick={this.cancel}></input>
                     </div>
                 </div>
