@@ -11,6 +11,8 @@ class Edit extends React.Component {
       
       }
       componentWillReceiveProps() {
+
+        
         this.setState({ 
             NameValue:this.props.block,
             PriceValue:this.props.cost,
@@ -46,7 +48,7 @@ class Edit extends React.Component {
 
     }
     valueName = (EO) => {
-        console.log(this.state.NameValue,this.state.PriceValue,this.state.UrlValue,this.state.QuantityValue)
+       
         switch(EO.target.id){
 
             case "name":
@@ -64,7 +66,7 @@ class Edit extends React.Component {
             case "quantity":
             this.setState({QuantityValue: EO.target.value});
             break;
-
+            
         }
 
     }
@@ -87,9 +89,9 @@ class Edit extends React.Component {
 
                 <div>
                     <div>{"id=" + this.props.ishop.code }</div>
-                    <div>{"Name"}<input type="text"     value={this.state.NameValue}      onChange={this.valueName} id={"name"}></input> </div>
-                    <div>{"Price"}<input type="text"    value={this.state.PriceValue}    onChange={this.valueName} id={"price"}></input> </div>
-                    <div>{"url"}<input type="text"      value={this.state.UrlValue}      onChange={this.valueName} id={"url"}></input> </div>
+                    <div>{"Name"}<input type="text"     value={this.state.NameValue}      onChange={this.valueName} id={"name"}></input>    </div>
+                    <div>{"Price"}<input type="text"    value={this.state.PriceValue}    onChange={this.valueName} id={"price"}></input>    </div>
+                    <div>{"url"}<input type="text"      value={this.state.UrlValue}      onChange={this.valueName} id={"url"}></input>      </div>
                     <div>{"Quantity"}<input type="text" value={this.state.QuantityValue} onChange={this.valueName} id={"quantity"}></input> </div>
                     <div>
                         <input type="submit" value={"save"}   onClick={this.save}></input>
@@ -114,12 +116,12 @@ class Edit extends React.Component {
 
             return (
                 <div>
-                    <div>{"Name"}<input type="text" defaultValue={""} onChange={this.valueName} id={"name"}></input> </div>
-                    <div>{"Price"}<input type="text" defaultValue={""} onChange={this.valueName} id={"price"}></input> </div>
-                    <div>{"url"}<input type="text" defaultValue={""} onChange={this.valueName} id={"url"}></input> </div>
-                    <div>{"Quantity"}<input type="text" defaultValue={""} onChange={this.valueName} id={"quantity"}></input> </div>
+                    <div>{"Name"}<input type="text"     value={this.state.NameValue}     onChange={this.valueName} id={"name"}></input>     </div>
+                    <div>{"Price"}<input type="text"    value={this.state.PriceValue}    onChange={this.valueName} id={"price"}></input>    </div>
+                    <div>{"url"}<input type="text"      value={this.state.UrlValue}      onChange={this.valueName} id={"url"}></input>      </div>
+                    <div>{"Quantity"}<input type="text" value={this.state.QuantityValue} onChange={this.valueName} id={"quantity"}></input> </div>
                     <div>
-                        <input type="submit" value={"save"} onClick={this.save}></input>
+                        <input type="submit" value={"add"}   onClick={this.save}></input>
                         <input type="submit" value={"cancel"} onClick={this.cancel}></input>
                     </div>
                 </div>

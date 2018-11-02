@@ -1047,7 +1047,7 @@ var Edit = function (_React$Component) {
         };
 
         _this.valueName = function (EO) {
-            console.log(_this.state.NameValue, _this.state.PriceValue, _this.state.UrlValue, _this.state.QuantityValue);
+
             switch (EO.target.id) {
 
                 case "name":
@@ -1084,6 +1084,7 @@ var Edit = function (_React$Component) {
     _createClass(Edit, [{
         key: 'componentWillReceiveProps',
         value: function componentWillReceiveProps() {
+
             this.setState({
                 NameValue: this.props.block,
                 PriceValue: this.props.cost,
@@ -1109,21 +1110,21 @@ var Edit = function (_React$Component) {
                         null,
                         "Name",
                         _react2.default.createElement('input', { type: 'text', value: this.state.NameValue, onChange: this.valueName, id: "name" }),
-                        ' '
+                        '    '
                     ),
                     _react2.default.createElement(
                         'div',
                         null,
                         "Price",
                         _react2.default.createElement('input', { type: 'text', value: this.state.PriceValue, onChange: this.valueName, id: "price" }),
-                        ' '
+                        '    '
                     ),
                     _react2.default.createElement(
                         'div',
                         null,
                         "url",
                         _react2.default.createElement('input', { type: 'text', value: this.state.UrlValue, onChange: this.valueName, id: "url" }),
-                        ' '
+                        '      '
                     ),
                     _react2.default.createElement(
                         'div',
@@ -1175,34 +1176,34 @@ var Edit = function (_React$Component) {
                         'div',
                         null,
                         "Name",
-                        _react2.default.createElement('input', { type: 'text', defaultValue: "", onChange: this.valueName, id: "name" }),
-                        ' '
+                        _react2.default.createElement('input', { type: 'text', value: this.state.NameValue, onChange: this.valueName, id: "name" }),
+                        '     '
                     ),
                     _react2.default.createElement(
                         'div',
                         null,
                         "Price",
-                        _react2.default.createElement('input', { type: 'text', defaultValue: "", onChange: this.valueName, id: "price" }),
-                        ' '
+                        _react2.default.createElement('input', { type: 'text', value: this.state.PriceValue, onChange: this.valueName, id: "price" }),
+                        '    '
                     ),
                     _react2.default.createElement(
                         'div',
                         null,
                         "url",
-                        _react2.default.createElement('input', { type: 'text', defaultValue: "", onChange: this.valueName, id: "url" }),
-                        ' '
+                        _react2.default.createElement('input', { type: 'text', value: this.state.UrlValue, onChange: this.valueName, id: "url" }),
+                        '      '
                     ),
                     _react2.default.createElement(
                         'div',
                         null,
                         "Quantity",
-                        _react2.default.createElement('input', { type: 'text', defaultValue: "", onChange: this.valueName, id: "quantity" }),
+                        _react2.default.createElement('input', { type: 'text', value: this.state.QuantityValue, onChange: this.valueName, id: "quantity" }),
                         ' '
                     ),
                     _react2.default.createElement(
                         'div',
                         null,
-                        _react2.default.createElement('input', { type: 'submit', value: "save", onClick: this.save }),
+                        _react2.default.createElement('input', { type: 'submit', value: "add", onClick: this.save }),
                         _react2.default.createElement('input', { type: 'submit', value: "cancel", onClick: this.cancel })
                     )
                 );
