@@ -29,8 +29,8 @@ class Ishop extends React.Component {
       atr:null,
       editContain:null,
       tick:0,
-      step:0,
-      
+      valid:false,
+      editMode:false,
       nameValue:"",
       priceValue:"",
       urlValue:"",
@@ -63,6 +63,7 @@ class Ishop extends React.Component {
     this.setState({urlValue:contain.url})
     this.setState({quantityValue:contain.kolvo})
     this.setState({codeValue:contain.code})
+    this.setState({editMode:true})
     console.log(contain)
   }
 
@@ -81,7 +82,14 @@ class Ishop extends React.Component {
 
   
 newProduct =()=>{
-this.setState({tick:3})
+this.setState({tick:3});
+this.setState({nameValue:""})
+this.setState({priceValue:""})
+this.setState({urlValue:""})
+this.setState({quantityValue:""})
+this.setState({codeValue:""})
+this.setState({editMode:true})
+this.setState({valid:false})
 }
 exit=(contain)=>{
   this.setState({tick:contain})
@@ -129,23 +137,7 @@ add=(Name,price,url,quantity,id)=>{
       );
 
      
-       var editContain= 
-      <Edit 
-      NewProductishop={this.NewProductishop}
-      color={this.color}
-      delete={this.delete}
-      exit={this.exit}
-      ishop={this.state.editContain} 
-      atr={this.state.atr}
-      tick={this.state.tick}
-      add={this.add}
-      block={this.state.nameValue}
-      cost={this.state.priceValue}
-      url={this.state.urlValue}
-      kolvo={this.state.quantityValue}
-      code={this.state.codeValue}
-      /> 
-      ;
+     
       
       return (
         <div className="VotesBlock">
@@ -165,7 +157,30 @@ add=(Name,price,url,quantity,id)=>{
         {catalogCode}
         </table> 
         <div className="Newproduct"><input type="submit" value={"NewProduct"} onClick={this.newProduct}></input> </div>
-        <div>{editContain}</div>
+        <div>
+        
+        {
+           this.state.editMode &&
+            <Edit 
+            NewProductishop={this.NewProductishop}
+            color={this.color}
+            delete={this.delete}
+            exit={this.exit}
+            ishop={this.state.editContain} 
+            atr={this.state.atr}
+            tick={this.state.tick}
+            valid={this.state.valid}
+            add={this.add}
+            block={this.state.nameValue}
+            cost={this.state.priceValue}
+            url={this.state.urlValue}
+            kolvo={this.state.quantityValue}
+            code={this.state.codeValue}
+            /> 
+        }
+      
+        
+        </div>
       
         </div>
         
