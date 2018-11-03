@@ -115,7 +115,7 @@ class Edit extends React.Component {
 
 
 
-        if (this.state.NameValue==false&&this.state.validPrice==false&&this.state.validUrl==false&&this.state.validQuantity==false){
+        if (this.state.validName==false&&this.state.validPrice==false&&this.state.validUrl==false&&this.state.validQuantity==false){
 
 
             this.props.add(this.state.NameValue,this.state.PriceValue,this.state.UrlValue,this.state.QuantityValue,this.state.codeValue);
@@ -156,7 +156,8 @@ class Edit extends React.Component {
         }
 
         
-        if (this.state.NameValue==false&&this.state.validPrice==false&&this.state.validUrl==false&&this.state.validQuantity==false){
+        if (this.state.validName==false&&this.state.validPrice==false&&this.state.validUrl==false&&this.state.validQuantity==false){
+
             this.props.NewProductishop(this.state.NameValue,this.state.PriceValue,this.state.UrlValue,this.state.QuantityValue);
         }
     }

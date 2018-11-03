@@ -1103,7 +1103,7 @@ var Edit = function (_React$Component) {
                 _this.setState({ validQuantity: false });
             }
 
-            if (_this.state.NameValue == false && _this.state.validPrice == false && _this.state.validUrl == false && _this.state.validQuantity == false) {
+            if (_this.state.validName == false && _this.state.validPrice == false && _this.state.validUrl == false && _this.state.validQuantity == false) {
 
                 _this.props.add(_this.state.NameValue, _this.state.PriceValue, _this.state.UrlValue, _this.state.QuantityValue, _this.state.codeValue);
             }
@@ -1140,7 +1140,8 @@ var Edit = function (_React$Component) {
                 _this.setState({ validQuantity: false });
             }
 
-            if (_this.state.NameValue == false && _this.state.validPrice == false && _this.state.validUrl == false && _this.state.validQuantity == false) {
+            if (_this.state.validName == false && _this.state.validPrice == false && _this.state.validUrl == false && _this.state.validQuantity == false) {
+
                 _this.props.NewProductishop(_this.state.NameValue, _this.state.PriceValue, _this.state.UrlValue, _this.state.QuantityValue);
             }
         };
