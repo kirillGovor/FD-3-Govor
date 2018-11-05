@@ -195,12 +195,12 @@ class Edit extends React.Component {
 
             return (
                 <div>
-                    <div>{"Name"}<input type="text"     value={this.state.NameValue}     onChange={this.valueName} id={"name"}></input>   {(this.state.validName == true&&this.state.valid==true)?valid:null}  </div>
-                    <div>{"Price"}<input type="text"    value={this.state.PriceValue}    onChange={this.valueName} id={"price"}></input>   {(this.state.validPrice == true&&this.state.valid==true)?valid:null}  </div>
-                    <div>{"url"}<input type="text"      value={this.state.UrlValue}      onChange={this.valueName} id={"url"}></input>      {(this.state.validUrl == true&&this.state.valid==true)?valid:null} </div>
-                    <div>{"Quantity"}<input type="text" value={this.state.QuantityValue} onChange={this.valueName} id={"quantity"}></input> {(this.state.validQuantity == true&&this.state.valid==true)?valid:null} </div>
+                    <div>{"Name"}<input type="text"     value={this.state.NameValue}      onBlur={this.inputBlur}  onChange={this.valueName} id={"name"}></input>   {(this.state.validName == true&&this.state.valid==true)?valid:null}  </div>
+                    <div>{"Price"}<input type="text"    value={this.state.PriceValue}     onBlur={this.inputBlur}  onChange={this.valueName} id={"price"}></input>   {(this.state.validPrice == true&&this.state.valid==true)?valid:null}  </div>
+                    <div>{"url"}<input type="text"      value={this.state.UrlValue}       onBlur={this.inputBlur}  onChange={this.valueName} id={"url"}></input>      {(this.state.validUrl == true&&this.state.valid==true)?valid:null} </div>
+                    <div>{"Quantity"}<input type="text" value={this.state.QuantityValue}  onBlur={this.inputBlur}  onChange={this.valueName} id={"quantity"}></input> {(this.state.validQuantity == true&&this.state.valid==true)?valid:null} </div>
                     <div>
-                        <input type="submit" value={"add"}   onClick={this.newProduct}></input>
+                        <input type="submit" value={"add"}  className={(this.state.validButton == true)?'valid':null}  onClick={this.newProduct}></input>
                         <input type="submit" value={"cancel"} onClick={this.cancel}></input>
                     </div>
                 </div>

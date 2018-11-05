@@ -1262,7 +1262,7 @@ var Edit = function (_React$Component) {
                         'div',
                         null,
                         "Name",
-                        _react2.default.createElement('input', { type: 'text', value: this.state.NameValue, onChange: this.valueName, id: "name" }),
+                        _react2.default.createElement('input', { type: 'text', value: this.state.NameValue, onBlur: this.inputBlur, onChange: this.valueName, id: "name" }),
                         '   ',
                         this.state.validName == true && this.state.valid == true ? valid : null,
                         '  '
@@ -1271,7 +1271,7 @@ var Edit = function (_React$Component) {
                         'div',
                         null,
                         "Price",
-                        _react2.default.createElement('input', { type: 'text', value: this.state.PriceValue, onChange: this.valueName, id: "price" }),
+                        _react2.default.createElement('input', { type: 'text', value: this.state.PriceValue, onBlur: this.inputBlur, onChange: this.valueName, id: "price" }),
                         '   ',
                         this.state.validPrice == true && this.state.valid == true ? valid : null,
                         '  '
@@ -1280,7 +1280,7 @@ var Edit = function (_React$Component) {
                         'div',
                         null,
                         "url",
-                        _react2.default.createElement('input', { type: 'text', value: this.state.UrlValue, onChange: this.valueName, id: "url" }),
+                        _react2.default.createElement('input', { type: 'text', value: this.state.UrlValue, onBlur: this.inputBlur, onChange: this.valueName, id: "url" }),
                         '      ',
                         this.state.validUrl == true && this.state.valid == true ? valid : null,
                         ' '
@@ -1289,7 +1289,7 @@ var Edit = function (_React$Component) {
                         'div',
                         null,
                         "Quantity",
-                        _react2.default.createElement('input', { type: 'text', value: this.state.QuantityValue, onChange: this.valueName, id: "quantity" }),
+                        _react2.default.createElement('input', { type: 'text', value: this.state.QuantityValue, onBlur: this.inputBlur, onChange: this.valueName, id: "quantity" }),
                         ' ',
                         this.state.validQuantity == true && this.state.valid == true ? valid : null,
                         ' '
@@ -1297,7 +1297,7 @@ var Edit = function (_React$Component) {
                     _react2.default.createElement(
                         'div',
                         null,
-                        _react2.default.createElement('input', { type: 'submit', value: "add", onClick: this.newProduct }),
+                        _react2.default.createElement('input', { type: 'submit', value: "add", className: this.state.validButton == true ? 'valid' : null, onClick: this.newProduct }),
                         _react2.default.createElement('input', { type: 'submit', value: "cancel", onClick: this.cancel })
                     )
                 );
@@ -21629,7 +21629,6 @@ var Ishop = function (_React$Component) {
         }
       });
       _this.setState({ ishop: catalog });
-      console.log(_this.state.ishop);
       _this.setState({ tick: 2 });
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }

@@ -116,7 +116,6 @@ add=(Name,price,url,quantity,id)=>{
  
   });
   this.setState({ishop:catalog});
-  console.log(this.state.ishop);
   this.setState({tick:2});
 }
 
