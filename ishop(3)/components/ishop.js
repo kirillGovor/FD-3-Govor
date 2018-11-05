@@ -78,6 +78,7 @@ class Ishop extends React.Component {
       }
     );
     this.setState({ishop:this.state.ishop})
+    this.setState({tick:2});
   }
 
   
@@ -112,11 +113,11 @@ add=(Name,price,url,quantity,id)=>{
       
     }
 
-    
+ 
   });
   this.setState({ishop:catalog});
   console.log(this.state.ishop);
-
+  this.setState({tick:2});
 }
 
   render() {

@@ -16,3 +16,7 @@
 .background{
     background-color: orange;
 }
+.valid{
+    opacity: .5;
+  pointer-events: none;
+}

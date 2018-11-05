@@ -39,7 +39,7 @@ class Edit extends React.Component {
         validQuantity:false,
 
       
-
+        validButton:false,
        NameValue:"",
         PriceValue:"",
         UrlValue:"",
@@ -63,107 +63,103 @@ class Edit extends React.Component {
        
         switch(EO.target.id){
 
+            
+
             case "name":
             this.setState({NameValue: EO.target.value});
+           
             break;
 
             case "price":
             this.setState({PriceValue: EO.target.value});
+      
             break;
 
             case "url":
             this.setState({UrlValue: EO.target.value});
+ 
             break;
 
             case "quantity":
             this.setState({QuantityValue: EO.target.value});
+         
             break;
             
         }
 
+        
     }
     save = (EO) => {
-        if (this.state.NameValue==""){ //валидация name
-            this.setState({validName:true})
-            this.setState({valid:true})
-        }
-        else{
-            this.setState({validName:false})
-        }
-       if (this.state.PriceValue==""){ //валидация price
-            this.setState({validPrice:true})
-            this.setState({valid:true})
-        }
-        else{
-            this.setState({validPrice:false})
-        }
-         if (this.state.UrlValue==""){ //валидация url
-            this.setState({validUrl:true})
-            this.setState({valid:true})
-        }
-        else{
-            this.setState({validUrl:false})
-        }
-         if (this.state.QuantityValue==""){ //валидация quantity
-            this.setState({validQuantity:true})
-            this.setState({valid:true})
-        }
-        else{   
-            this.setState({validQuantity:false})
-        }
+     
 
 
 
-
-        if (this.state.validName==false&&this.state.validPrice==false&&this.state.validUrl==false&&this.state.validQuantity==false){
+        if (this.state.validName==false||this.state.validName==undefined&&this.state.validPrice==false||this.state.validPrice==undefined&&
+            this.state.validUrl==false||this.state.validUrl==undefined&&this.state.validQuantity==false||this.state.validQuantity==undefined){
 
 
             this.props.add(this.state.NameValue,this.state.PriceValue,this.state.UrlValue,this.state.QuantityValue,this.state.codeValue);
         }
         
     }
-
-    newProduct = () => {
-       
-
+    inputBlur = () =>{
         if (this.state.NameValue==""){ //валидация name
             this.setState({validName:true})
             this.setState({valid:true})
+            
         }
         else{
             this.setState({validName:false})
+            
         }
        if (this.state.PriceValue==""){ //валидация price
             this.setState({validPrice:true})
             this.setState({valid:true})
+            
         }
         else{
             this.setState({validPrice:false})
+          
         }
          if (this.state.UrlValue==""){ //валидация url
             this.setState({validUrl:true})
             this.setState({valid:true})
+            
         }
         else{
             this.setState({validUrl:false})
+            this.setState({validButton:false})
         }
          if (this.state.QuantityValue==""){ //валидация quantity
             this.setState({validQuantity:true})
             this.setState({valid:true})
+           
         }
         else{   
             this.setState({validQuantity:false})
+            
         }
+        if (this.state.NameValue==""){this.setState({validButton:true})}
+        if (this.state.PriceValue==""){this.setState({validButton:true})}
+        if (this.state.UrlValue==""){this.setState({validButton:true})}
+        if (this.state.QuantityValue==""){this.setState({validButton:true})}
+       
+    }
+    newProduct = () => {
+       
+    
 
         
-        if (this.state.validName==false&&this.state.validPrice==false&&this.state.validUrl==false&&this.state.validQuantity==false){
+        
+        if (this.state.validName==false||this.state.validName==undefined&&this.state.validPrice==false||this.state.validPrice==undefined&&
+            this.state.validUrl==false||this.state.validUrl==undefined&&this.state.validQuantity==false||this.state.validQuantity==undefined){
 
             this.props.NewProductishop(this.state.NameValue,this.state.PriceValue,this.state.UrlValue,this.state.QuantityValue);
         }
     }
 
     render() {
-            var valid =<span style={{color:"red"}} >Заолните поле</span> ;
+            var valid =<span style={{color:"red"}} >Заполните поле</span> ;
 
         if (this.props.tick == 1) {
          
@@ -172,12 +168,12 @@ class Edit extends React.Component {
 
                 <div>
                     <div>{"id=" + this.state.codeValue }</div>
-                    <div>{"Name"}<input type="text"     value={this.state.NameValue}      onChange={this.valueName} id={"name"}></input>    {(this.state.validName == true&&this.state.valid==true)?valid:null}   </div>
-                    <div>{"Price"}<input type="text"    value={this.state.PriceValue}    onChange={this.valueName} id={"price"}></input>    {(this.state.validPrice == true&&this.state.valid==true)?valid:null}   </div>
-                    <div>{"url"}<input type="text"      value={this.state.UrlValue}      onChange={this.valueName} id={"url"}></input>      {(this.state.validUrl == true&&this.state.valid==true)?valid:null}    </div>
-                    <div>{"Quantity"}<input type="text" value={this.state.QuantityValue} onChange={this.valueName} id={"quantity"}></input> {(this.state.validQuantity == true&&this.state.valid==true)?valid:null}   </div>
+                    <div>{"Name"}<input type="text"     value={this.state.NameValue}     onBlur={this.inputBlur} onChange={this.valueName}    onChange={this.valueName} id={"name"}></input>    {(this.state.validName == true&&this.state.valid==true)?valid:null}   </div>
+                    <div>{"Price"}<input type="text"    value={this.state.PriceValue}    onBlur={this.inputBlur} onChange={this.valueName}    onChange={this.valueName} id={"price"}></input>   {(this.state.validPrice == true&&this.state.valid==true)?valid:null}   </div>
+                    <div>{"url"}<input type="text"      value={this.state.UrlValue}      onBlur={this.inputBlur} onChange={this.valueName}    onChange={this.valueName} id={"url"}></input>     {(this.state.validUrl == true&&this.state.valid==true)?valid:null}    </div>
+                    <div>{"Quantity"}<input type="text" value={this.state.QuantityValue} onBlur={this.inputBlur} onChange={this.valueName}   onChange={this.valueName} id={"quantity"}></input> {(this.state.validQuantity == true&&this.state.valid==true)?valid:null}   </div>
                     <div>
-                        <input type="submit" value={"save"}   onClick={this.save}></input>
+                        <input type="submit" value={"save"} className={(this.state.validButton == true)?'valid':null}  onClick={this.save}></input>
                         <input type="submit" value={"cancel"} onClick={this.cancel}></input>
                     </div>
                 </div>

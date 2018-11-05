@@ -1010,6 +1010,8 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -1034,6 +1036,7 @@ var Edit = function (_React$Component) {
             validUrl: false,
             validQuantity: false,
 
+            validButton: false,
             NameValue: "",
             PriceValue: "",
             UrlValue: "",
@@ -1056,61 +1059,36 @@ var Edit = function (_React$Component) {
 
                 case "name":
                     _this.setState({ NameValue: EO.target.value });
+
                     break;
 
                 case "price":
                     _this.setState({ PriceValue: EO.target.value });
+
                     break;
 
                 case "url":
                     _this.setState({ UrlValue: EO.target.value });
+
                     break;
 
                 case "quantity":
                     _this.setState({ QuantityValue: EO.target.value });
+
                     break;
 
             }
         };
 
         _this.save = function (EO) {
-            if (_this.state.NameValue == "") {
-                //валидация name
-                _this.setState({ validName: true });
-                _this.setState({ valid: true });
-            } else {
-                _this.setState({ validName: false });
-            }
-            if (_this.state.PriceValue == "") {
-                //валидация price
-                _this.setState({ validPrice: true });
-                _this.setState({ valid: true });
-            } else {
-                _this.setState({ validPrice: false });
-            }
-            if (_this.state.UrlValue == "") {
-                //валидация url
-                _this.setState({ validUrl: true });
-                _this.setState({ valid: true });
-            } else {
-                _this.setState({ validUrl: false });
-            }
-            if (_this.state.QuantityValue == "") {
-                //валидация quantity
-                _this.setState({ validQuantity: true });
-                _this.setState({ valid: true });
-            } else {
-                _this.setState({ validQuantity: false });
-            }
 
-            if (_this.state.validName == false && _this.state.validPrice == false && _this.state.validUrl == false && _this.state.validQuantity == false) {
+            if (_this.state.validName == false || _this.state.validName == undefined && _this.state.validPrice == false || _this.state.validPrice == undefined && _this.state.validUrl == false || _this.state.validUrl == undefined && _this.state.validQuantity == false || _this.state.validQuantity == undefined) {
 
                 _this.props.add(_this.state.NameValue, _this.state.PriceValue, _this.state.UrlValue, _this.state.QuantityValue, _this.state.codeValue);
             }
         };
 
-        _this.newProduct = function () {
-
+        _this.inputBlur = function () {
             if (_this.state.NameValue == "") {
                 //валидация name
                 _this.setState({ validName: true });
@@ -1131,6 +1109,7 @@ var Edit = function (_React$Component) {
                 _this.setState({ valid: true });
             } else {
                 _this.setState({ validUrl: false });
+                _this.setState({ validButton: false });
             }
             if (_this.state.QuantityValue == "") {
                 //валидация quantity
@@ -1139,8 +1118,23 @@ var Edit = function (_React$Component) {
             } else {
                 _this.setState({ validQuantity: false });
             }
+            if (_this.state.NameValue == "") {
+                _this.setState({ validButton: true });
+            }
+            if (_this.state.PriceValue == "") {
+                _this.setState({ validButton: true });
+            }
+            if (_this.state.UrlValue == "") {
+                _this.setState({ validButton: true });
+            }
+            if (_this.state.QuantityValue == "") {
+                _this.setState({ validButton: true });
+            }
+        };
 
-            if (_this.state.validName == false && _this.state.validPrice == false && _this.state.validUrl == false && _this.state.validQuantity == false) {
+        _this.newProduct = function () {
+
+            if (_this.state.validName == false || _this.state.validName == undefined && _this.state.validPrice == false || _this.state.validPrice == undefined && _this.state.validUrl == false || _this.state.validUrl == undefined && _this.state.validQuantity == false || _this.state.validQuantity == undefined) {
 
                 _this.props.NewProductishop(_this.state.NameValue, _this.state.PriceValue, _this.state.UrlValue, _this.state.QuantityValue);
             }
@@ -1175,10 +1169,11 @@ var Edit = function (_React$Component) {
             var valid = _react2.default.createElement(
                 'span',
                 { style: { color: "red" } },
-                '\u0417\u0430\u043E\u043B\u043D\u0438\u0442\u0435 \u043F\u043E\u043B\u0435'
+                '\u0417\u0430\u043F\u043E\u043B\u043D\u0438\u0442\u0435 \u043F\u043E\u043B\u0435'
             );
 
             if (this.props.tick == 1) {
+                var _React$createElement, _React$createElement2, _React$createElement3, _React$createElement4;
 
                 return _react2.default.createElement(
                     'div',
@@ -1192,7 +1187,7 @@ var Edit = function (_React$Component) {
                         'div',
                         null,
                         "Name",
-                        _react2.default.createElement('input', { type: 'text', value: this.state.NameValue, onChange: this.valueName, id: "name" }),
+                        _react2.default.createElement('input', (_React$createElement = { type: 'text', value: this.state.NameValue, onBlur: this.inputBlur, onChange: this.valueName }, _defineProperty(_React$createElement, 'onChange', this.valueName), _defineProperty(_React$createElement, 'id', "name"), _React$createElement)),
                         '    ',
                         this.state.validName == true && this.state.valid == true ? valid : null,
                         '   '
@@ -1201,8 +1196,8 @@ var Edit = function (_React$Component) {
                         'div',
                         null,
                         "Price",
-                        _react2.default.createElement('input', { type: 'text', value: this.state.PriceValue, onChange: this.valueName, id: "price" }),
-                        '    ',
+                        _react2.default.createElement('input', (_React$createElement2 = { type: 'text', value: this.state.PriceValue, onBlur: this.inputBlur, onChange: this.valueName }, _defineProperty(_React$createElement2, 'onChange', this.valueName), _defineProperty(_React$createElement2, 'id', "price"), _React$createElement2)),
+                        '   ',
                         this.state.validPrice == true && this.state.valid == true ? valid : null,
                         '   '
                     ),
@@ -1210,8 +1205,8 @@ var Edit = function (_React$Component) {
                         'div',
                         null,
                         "url",
-                        _react2.default.createElement('input', { type: 'text', value: this.state.UrlValue, onChange: this.valueName, id: "url" }),
-                        '      ',
+                        _react2.default.createElement('input', (_React$createElement3 = { type: 'text', value: this.state.UrlValue, onBlur: this.inputBlur, onChange: this.valueName }, _defineProperty(_React$createElement3, 'onChange', this.valueName), _defineProperty(_React$createElement3, 'id', "url"), _React$createElement3)),
+                        '     ',
                         this.state.validUrl == true && this.state.valid == true ? valid : null,
                         '    '
                     ),
@@ -1219,7 +1214,7 @@ var Edit = function (_React$Component) {
                         'div',
                         null,
                         "Quantity",
-                        _react2.default.createElement('input', { type: 'text', value: this.state.QuantityValue, onChange: this.valueName, id: "quantity" }),
+                        _react2.default.createElement('input', (_React$createElement4 = { type: 'text', value: this.state.QuantityValue, onBlur: this.inputBlur, onChange: this.valueName }, _defineProperty(_React$createElement4, 'onChange', this.valueName), _defineProperty(_React$createElement4, 'id', "quantity"), _React$createElement4)),
                         ' ',
                         this.state.validQuantity == true && this.state.valid == true ? valid : null,
                         '   '
@@ -1227,7 +1222,7 @@ var Edit = function (_React$Component) {
                     _react2.default.createElement(
                         'div',
                         null,
-                        _react2.default.createElement('input', { type: 'submit', value: "save", onClick: this.save }),
+                        _react2.default.createElement('input', { type: 'submit', value: "save", className: this.state.validButton == true ? 'valid' : null, onClick: this.save }),
                         _react2.default.createElement('input', { type: 'submit', value: "cancel", onClick: this.cancel })
                     )
                 );
@@ -21607,6 +21602,7 @@ var Ishop = function (_React$Component) {
         kolvo: quantity
       });
       _this.setState({ ishop: _this.state.ishop });
+      _this.setState({ tick: 2 });
     }, _this.newProduct = function () {
       _this.setState({ tick: 3 });
       _this.setState({ nameValue: "" });
@@ -21634,6 +21630,7 @@ var Ishop = function (_React$Component) {
       });
       _this.setState({ ishop: catalog });
       console.log(_this.state.ishop);
+      _this.setState({ tick: 2 });
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
