@@ -33,8 +33,9 @@ class Tovar extends React.Component{
 
       color =(EO) =>{
         let contain = this.props.ishop;
-        let contain2 =this.props.ishop;
-        this.props.color(contain,contain2);
+       
+        
+        this.props.color(contain);
       }
 
       edit =(EO) =>{

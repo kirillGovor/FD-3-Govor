@@ -1083,8 +1083,9 @@ var Edit = function (_React$Component) {
         _this.save = function (EO) {
 
             if (_this.state.validName == false || _this.state.validName == undefined && _this.state.validPrice == false || _this.state.validPrice == undefined && _this.state.validUrl == false || _this.state.validUrl == undefined && _this.state.validQuantity == false || _this.state.validQuantity == undefined) {
+                var contain = { block: _this.state.NameValue, cost: _this.state.PriceValue, url: _this.state.UrlValue, kolvo: _this.state.QuantityValue, code: _this.state.codeValue };
 
-                _this.props.add(_this.state.NameValue, _this.state.PriceValue, _this.state.UrlValue, _this.state.QuantityValue, _this.state.codeValue);
+                _this.props.add(_this.state.NameValue, _this.state.PriceValue, _this.state.UrlValue, _this.state.QuantityValue, _this.state.codeValue, contain);
             }
         };
 
@@ -1135,8 +1136,8 @@ var Edit = function (_React$Component) {
         _this.newProduct = function () {
 
             if (_this.state.validName == false || _this.state.validName == undefined && _this.state.validPrice == false || _this.state.validPrice == undefined && _this.state.validUrl == false || _this.state.validUrl == undefined && _this.state.validQuantity == false || _this.state.validQuantity == undefined) {
-
-                _this.props.NewProductishop(_this.state.NameValue, _this.state.PriceValue, _this.state.UrlValue, _this.state.QuantityValue);
+                var contain = { block: _this.state.NameValue, cost: _this.state.PriceValue, url: _this.state.UrlValue, kolvo: _this.state.QuantityValue, code: _this.state.NameValue };
+                _this.props.NewProductishop(_this.state.NameValue, _this.state.PriceValue, _this.state.UrlValue, _this.state.QuantityValue, contain);
             }
         };
 
@@ -1145,7 +1146,8 @@ var Edit = function (_React$Component) {
             PriceValue: props.cost,
             UrlValue: props.url,
             QuantityValue: props.kolvo,
-            codeValue: props.code };
+            codeValue: props.code,
+            ishop: _this.props.ishop };
 
         return _this;
     }
@@ -1161,6 +1163,7 @@ var Edit = function (_React$Component) {
                 QuantityValue: props.kolvo,
                 codeValue: props.code,
                 valid: props.valid
+
             });
         }
     }, {
@@ -21580,10 +21583,11 @@ var Ishop = function (_React$Component) {
       });
       _this.setState({ ishop: catalog });
       _this.setState({ tick: 0 });
-    }, _this.color = function (contain, contain2) {
-      _this.setState({ tick: 2 });
+    }, _this.color = function (contain) {
       _this.setState({ atr: contain.code });
-      _this.setState({ editContain: contain2 });
+      _this.setState({ editContain: contain });
+      _this.setState({ tick: 2 });
+      _this.setState({ editMode: true });
     }, _this.edit = function (contain) {
       _this.setState({ tick: 1 });
       _this.setState({ editContain: contain });
@@ -21594,7 +21598,7 @@ var Ishop = function (_React$Component) {
       _this.setState({ codeValue: contain.code });
       _this.setState({ editMode: true });
       console.log(contain);
-    }, _this.NewProductishop = function (Name, price, url, quantity) {
+    }, _this.NewProductishop = function (Name, price, url, quantity, contain) {
       _this.state.ishop.push({ block: Name,
         code: Name,
         cost: price,
@@ -21603,6 +21607,7 @@ var Ishop = function (_React$Component) {
       });
       _this.setState({ ishop: _this.state.ishop });
       _this.setState({ tick: 2 });
+      _this.color(contain);
     }, _this.newProduct = function () {
       _this.setState({ tick: 3 });
       _this.setState({ nameValue: "" });
@@ -21614,7 +21619,7 @@ var Ishop = function (_React$Component) {
       _this.setState({ valid: false });
     }, _this.exit = function (contain) {
       _this.setState({ tick: contain });
-    }, _this.add = function (Name, price, url, quantity, id) {
+    }, _this.add = function (Name, price, url, quantity, id, contain) {
 
       var catalog = _this.state.ishop.slice();
       catalog.forEach(function (item, i, arr) {
@@ -21630,6 +21635,7 @@ var Ishop = function (_React$Component) {
       });
       _this.setState({ ishop: catalog });
       _this.setState({ tick: 2 });
+      _this.color(contain);
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -21723,6 +21729,7 @@ var Ishop = function (_React$Component) {
             url: this.state.urlValue,
             kolvo: this.state.quantityValue,
             code: this.state.codeValue
+
           })
         )
       );
@@ -21808,8 +21815,8 @@ var Tovar = function (_React$Component) {
             _this.props.delete(contain);
         }, _this.color = function (EO) {
             var contain = _this.props.ishop;
-            var contain2 = _this.props.ishop;
-            _this.props.color(contain, contain2);
+
+            _this.props.color(contain);
         }, _this.edit = function (EO) {
             EO.stopPropagation();
             var contain = _this.props.ishop;

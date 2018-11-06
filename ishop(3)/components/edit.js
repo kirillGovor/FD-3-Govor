@@ -12,7 +12,8 @@ class Edit extends React.Component {
            PriceValue:props.cost,
            UrlValue:props.url,
            QuantityValue:props.kolvo,
-           codeValue:props.code,};
+           codeValue:props.code,
+           ishop:this.props.ishop};
       
       }
       componentWillReceiveProps(props) {
@@ -25,6 +26,7 @@ class Edit extends React.Component {
             QuantityValue:props.kolvo,
             codeValue:props.code,
             valid:props.valid,
+            
         });
       }
     
@@ -96,9 +98,9 @@ class Edit extends React.Component {
 
         if (this.state.validName==false||this.state.validName==undefined&&this.state.validPrice==false||this.state.validPrice==undefined&&
             this.state.validUrl==false||this.state.validUrl==undefined&&this.state.validQuantity==false||this.state.validQuantity==undefined){
+                var contain = {block:this.state.NameValue,cost:this.state.PriceValue,url:this.state.UrlValue,kolvo:this.state.QuantityValue,code:this.state.codeValue}
 
-
-            this.props.add(this.state.NameValue,this.state.PriceValue,this.state.UrlValue,this.state.QuantityValue,this.state.codeValue);
+            this.props.add(this.state.NameValue,this.state.PriceValue,this.state.UrlValue,this.state.QuantityValue,this.state.codeValue,contain);
         }
         
     }
@@ -153,8 +155,8 @@ class Edit extends React.Component {
         
         if (this.state.validName==false||this.state.validName==undefined&&this.state.validPrice==false||this.state.validPrice==undefined&&
             this.state.validUrl==false||this.state.validUrl==undefined&&this.state.validQuantity==false||this.state.validQuantity==undefined){
-
-            this.props.NewProductishop(this.state.NameValue,this.state.PriceValue,this.state.UrlValue,this.state.QuantityValue);
+                var contain = {block:this.state.NameValue,cost:this.state.PriceValue,url:this.state.UrlValue,kolvo:this.state.QuantityValue,code:this.state.NameValue}
+            this.props.NewProductishop(this.state.NameValue,this.state.PriceValue,this.state.UrlValue,this.state.QuantityValue,contain);
         }
     }
 
