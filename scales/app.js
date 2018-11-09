@@ -11,152 +11,75 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var Product = /** @class */ (function () {
-    function Product(_serialNumber) {
+var Scales = /** @class */ (function () {
+    function Scales(storage, nameProduct, scale) {
         this.storage = {};
+        nameProduct = this.nameProduct;
+        scale = this.scale;
     }
-    Product.prototype.addProd = function (name, weight) {
-        this.storage[name] = weight;
-        return this.storage;
+    Scales.prototype.add = function () {
+        this.storage[this.nameProduct] = this.scale;
+        console.log("Продукт добавлен");
     };
-    Product.prototype.getProd = function (name) {
-        if (name in this.storage) {
-            return (this.storage[name]);
-        }
+    Scales.prototype.getNameList = function () {
+        console.log(this.storage);
     };
-    Product.prototype.delProd = function (name) {
-        if (this.storage[name] == undefined) {
-            return (false);
-        }
-        else {
-            delete this.storage[name];
-            return (true);
-        }
-    };
-    Product.prototype.getKey = function () {
-        return Object.keys(this.storage);
-    };
-    Product.prototype.sumProduct = function () {
+    Scales.prototype.getSumScale = function () {
         var sum = 0;
         for (var i in this.storage) {
             sum = this.storage[i] + sum;
         }
-        return (sum);
+        console.log(sum);
+    };
+    return Scales;
+}());
+var Product = /** @class */ (function (_super) {
+    __extends(Product, _super);
+    function Product(nameProduct, scale) {
+        var _this = _super.call(this, Scales, nameProduct, scale) || this;
+        _this.nameProduct = nameProduct;
+        _this.scale = scale;
+        return _this;
+    }
+    Product.prototype.getScale = function () {
+        console.log("Вес продукта " + this.storage[this.nameProduct]);
+    };
+    Product.prototype.getName = function () {
+        console.log("Имя продукта " + this.nameProduct);
     };
     return Product;
-}());
+}(Scales));
 var Tomato = /** @class */ (function (_super) {
     __extends(Tomato, _super);
-    function Tomato() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function Tomato(nameProduct, scale) {
+        return _super.call(this, nameProduct, scale) || this;
     }
-    Tomato.prototype.addTomato = function (key, weight) {
-        return (this.addProd(key, weight));
-    };
-    Tomato.prototype.getTomato = function (key) {
-        return (this.getProd(key));
-    };
-    Tomato.prototype.delTomato = function (key) {
-        return (this.getProd(key));
-    };
-    Tomato.prototype.getkeyTomato = function () {
-        return (this.getKey());
-    };
-    Tomato.prototype.sumProductTomato = function () {
-        return (this.sumProduct());
-    };
     return Tomato;
 }(Product));
 var Apple = /** @class */ (function (_super) {
     __extends(Apple, _super);
-    function Apple() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function Apple(nameProduct, scale) {
+        return _super.call(this, nameProduct, scale) || this;
     }
-    Apple.prototype.addApple = function (key, weight) {
-        return (this.addProd(key, weight));
-    };
-    Apple.prototype.getApple = function (key) {
-        return (this.getProd(key));
-    };
-    Apple.prototype.delApple = function (key) {
-        return (this.getProd(key));
-    };
-    Apple.prototype.getkeyApple = function () {
-        return (this.getKey());
-    };
-    Apple.prototype.sumProductApple = function () {
-        return (this.sumProduct());
-    };
     return Apple;
 }(Product));
-// TOMATO
-function sumPomidori() {
-    var sum = Tomato1.sumProductTomato();
-    alert("cумма всех помидор:" + sum);
-}
-function addPomidori() {
-    var value;
-    var key;
-    var weight;
-    key = prompt("Введите название помидору");
-    weight = Number((prompt("Сколько весит?")));
-    Tomato1.addTomato(key, weight);
-}
-function getPomidori() {
-    var elseIF;
-    var key = prompt("Введите название помидоры");
-    var elseIF = Tomato1.getTomato(key);
-    if (elseIF != undefined) {
-        alert("\n        \u043F\u043E\u043C\u0438\u0434\u043E\u0440\u0430:" + name + "\n        \u0412\u0435\u0441:" + elseIF + "\n       ");
-    }
-    else {
-        alert(undefined);
-    }
-}
-function delPomidori() {
-    var elseIF;
-    var key = prompt("Ведите название поимидоры, которую хотите удалить");
-    elseIF = Tomato1.delTomato(key);
-    alert(elseIF);
-}
-function getPomidoriKey() {
-    var mass = Tomato1.getkeyTomato();
-    alert("Перечень всех напитков:" + "\n" + mass);
-}
-var Tomato1 = new Tomato("Tomato");
-//APLLE
-function sumApple() {
-    var sum = Apple1.sumProductApple();
-    alert("cумма всех яблок:" + sum);
-}
-function addApple() {
-    var value;
-    var key;
-    var weight;
-    key = prompt("Введите название помидору");
-    weight = Number((prompt("Сколько весит?")));
-    Apple1.addApple(key, weight);
-}
-function getApple() {
-    var elseIF;
-    var key = prompt("Введите название помидоры");
-    var elseIF = Apple1.getApple(key);
-    if (elseIF != undefined) {
-        alert("\n         \u043F\u043E\u043C\u0438\u0434\u043E\u0440\u0430:" + name + "\n         \u0412\u0435\u0441:" + elseIF + "\n        ");
-    }
-    else {
-        alert(undefined);
-    }
-}
-function delApple() {
-    var elseIF;
-    var key = prompt("Ведите название поимидоры, которую хотите удалить");
-    elseIF = Apple1.delApple(key);
-    alert(elseIF);
-}
-function getAppleKey() {
-    var mass = Apple1.getkeyApple();
-    alert("Перечень всех напитков:" + "\n" + mass);
-}
-var Apple1 = new Apple("Apple");
+var Tomato1 = new Tomato("Красный томат", 18);
+var Tomato2 = new Tomato("Желтый томат", 18);
+var Apple1 = new Apple("Красное яблоко", 12);
+var Apple2 = new Apple("Зеленое яблоко", 15);
+var Scale1 = new Scales({}, "", 0);
+Tomato1.add();
+Tomato1.getName();
+Tomato1.getScale();
+Tomato2.add();
+Tomato2.getName();
+Tomato2.getScale();
+Apple1.add();
+Apple1.getName();
+Apple1.getScale();
+Apple2.add();
+Apple2.getName();
+Apple2.getScale();
+Tomato1.getNameList();
+Scale1.getSumScale();
 //# sourceMappingURL=app.js.map
