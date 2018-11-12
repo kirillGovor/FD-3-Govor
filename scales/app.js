@@ -12,40 +12,27 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 var Scales = /** @class */ (function () {
-    function Scales(storage, nameProduct, scale) {
-        this.storage = {};
-        nameProduct = this.nameProduct;
-        scale = this.scale;
+    function Scales(nameProduct, scale) {
+        this.nameProduct = nameProduct;
+        this.scale = scale;
     }
     Scales.prototype.add = function () {
-        this.storage[this.nameProduct] = this.scale;
-        console.log("Продукт добавлен");
-    };
-    Scales.prototype.getNameList = function () {
-        console.log(this.storage);
-    };
-    Scales.prototype.getSumScale = function () {
-        var sum = 0;
-        for (var i in this.storage) {
-            sum = this.storage[i] + sum;
-        }
-        console.log(sum);
+        var Product = new Array();
+        Product.push(this.nameProduct, this.scale);
+        console.log(Product);
     };
     return Scales;
 }());
 var Product = /** @class */ (function (_super) {
     __extends(Product, _super);
     function Product(nameProduct, scale) {
-        var _this = _super.call(this, Scales, nameProduct, scale) || this;
-        _this.nameProduct = nameProduct;
-        _this.scale = scale;
-        return _this;
+        return _super.call(this, nameProduct, scale) || this;
     }
     Product.prototype.getScale = function () {
-        console.log("Вес продукта " + this.storage[this.nameProduct]);
+        console.log(this.scale);
     };
     Product.prototype.getName = function () {
-        console.log("Имя продукта " + this.nameProduct);
+        console.log(this.nameProduct);
     };
     return Product;
 }(Scales));
@@ -67,7 +54,6 @@ var Tomato1 = new Tomato("Красный томат", 18);
 var Tomato2 = new Tomato("Желтый томат", 18);
 var Apple1 = new Apple("Красное яблоко", 12);
 var Apple2 = new Apple("Зеленое яблоко", 15);
-var Scale1 = new Scales({}, "", 0);
 Tomato1.add();
 Tomato1.getName();
 Tomato1.getScale();
@@ -80,6 +66,4 @@ Apple1.getScale();
 Apple2.add();
 Apple2.getName();
 Apple2.getScale();
-Tomato1.getNameList();
-Scale1.getSumScale();
 //# sourceMappingURL=app.js.map
