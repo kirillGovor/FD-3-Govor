@@ -2,17 +2,20 @@
 class Scales {
     nameProduct:string;
     scale:number;
-
+    product:object[];
+    
     constructor(nameProduct:string,scale:number) {
+        this.product=[{}];
         this.nameProduct=nameProduct;
         this.scale=scale;
     }
 
 
     public add(){
-        var Product = new Array(); 
-        Product.push(this.nameProduct,this.scale); 
-        console.log(Product);
+       var name= this.nameProduct;
+       var weight = this.scale
+       this.product.push({name,weight}); 
+        console.log(this.product);
     }
 }
 

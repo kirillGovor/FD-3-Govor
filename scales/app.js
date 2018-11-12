@@ -13,13 +13,15 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var Scales = /** @class */ (function () {
     function Scales(nameProduct, scale) {
+        this.product = [{}];
         this.nameProduct = nameProduct;
         this.scale = scale;
     }
     Scales.prototype.add = function () {
-        var Product = new Array();
-        Product.push(this.nameProduct, this.scale);
-        console.log(Product);
+        var name = this.nameProduct;
+        var weight = this.scale;
+        this.product.push({ name: name, weight: weight });
+        console.log(this.product);
     };
     return Scales;
 }());
