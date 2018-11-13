@@ -12,26 +12,26 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 var Scales = /** @class */ (function () {
-    function Scales(nameProduct, scale) {
-        this.product = [{}];
+    function Scales(nameProduct, weight) {
         this.nameProduct = nameProduct;
-        this.scale = scale;
+        this.weight = weight;
+        this.products = this.products;
     }
-    Scales.prototype.add = function () {
+    Scales.prototype.add = function (Product) {
         var name = this.nameProduct;
-        var weight = this.scale;
-        this.product.push({ name: name, weight: weight });
-        console.log(this.product);
+        var weight = this.weight;
+        this.products.push(Product);
+        console.log(this.products);
     };
     return Scales;
 }());
 var Product = /** @class */ (function (_super) {
     __extends(Product, _super);
-    function Product(nameProduct, scale) {
-        return _super.call(this, nameProduct, scale) || this;
+    function Product(nameProduct, weight) {
+        return _super.call(this, nameProduct, weight) || this;
     }
-    Product.prototype.getScale = function () {
-        console.log(this.scale);
+    Product.prototype.getWeight = function () {
+        console.log(this.weight);
     };
     Product.prototype.getName = function () {
         console.log(this.nameProduct);
@@ -40,32 +40,37 @@ var Product = /** @class */ (function (_super) {
 }(Scales));
 var Tomato = /** @class */ (function (_super) {
     __extends(Tomato, _super);
-    function Tomato(nameProduct, scale) {
-        return _super.call(this, nameProduct, scale) || this;
+    function Tomato(nameProduct, weight) {
+        return _super.call(this, nameProduct, weight) || this;
     }
     return Tomato;
 }(Product));
 var Apple = /** @class */ (function (_super) {
     __extends(Apple, _super);
-    function Apple(nameProduct, scale) {
-        return _super.call(this, nameProduct, scale) || this;
+    function Apple(nameProduct, weight) {
+        return _super.call(this, nameProduct, weight) || this;
     }
     return Apple;
 }(Product));
+var Scales1 = new Scales("1", 2);
 var Tomato1 = new Tomato("Красный томат", 18);
 var Tomato2 = new Tomato("Желтый томат", 18);
 var Apple1 = new Apple("Красное яблоко", 12);
 var Apple2 = new Apple("Зеленое яблоко", 15);
-Tomato1.add();
+//Tomato1.add();
 Tomato1.getName();
-Tomato1.getScale();
-Tomato2.add();
+Tomato1.getWeight();
+Scales1.add(Tomato1);
+//Tomato2.add();
 Tomato2.getName();
-Tomato2.getScale();
-Apple1.add();
+Tomato2.getWeight();
+Scales1.add(Tomato2);
+//Apple1.add();
 Apple1.getName();
-Apple1.getScale();
-Apple2.add();
+Apple1.getWeight();
+Scales1.add(Apple1);
+//Apple2.add();
 Apple2.getName();
-Apple2.getScale();
+Apple2.getWeight();
+Scales1.add(Apple2);
 //# sourceMappingURL=app.js.map
