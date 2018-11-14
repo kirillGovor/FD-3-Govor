@@ -1,15 +1,14 @@
 interface IScalable {
+    products: Array<IScalable> ;
     getWeight(): number;
     getName(): string;
 }
 class Scales {
-    nameProduct: string;
-    weight: number;
-    products: Array<Product> = [];
+    products: Array<IScalable> = [];
 
 
 
-    add(p: Product): void {
+    add(p: IScalable): void {
         this.products.push(p)
     }
     getSumScale(): number {
@@ -29,35 +28,17 @@ class Scales {
 }
 
 
-class Product {
-    weight: number;
-    nameProduct: string;
-    constructor(nameProduct: string, weight: number) {
-        this.nameProduct = nameProduct;
-        this.weight = weight;
-    }
-
-
-
-  public getWeight(): number {
-      return (this.weight)
-
-    }
-    public getName(): string {
-        return (this.nameProduct)
-
-    }
-
-}
 
 
 
 
-class Tomato extends Product implements IScalable {
+class Tomato  implements IScalable {
     nameProduct: string;
     weight: number;
+    products: Array<IScalable> = [];
     constructor(nameProduct: string, weight: number) {
-        super(nameProduct, weight);
+        this.nameProduct=nameProduct;
+        this.weight=weight;
     }
      getWeight(): number {
         return (this.weight)
@@ -70,13 +51,14 @@ class Tomato extends Product implements IScalable {
 
 }
 
-class Apple extends Product implements IScalable {
-
+class Apple  implements IScalable {
+    products: Array<IScalable> = [];
     nameProduct: string;
     weight: number;
 
     constructor(nameProduct: string, weight: number) {
-        super(nameProduct, weight);
+       this.nameProduct=nameProduct;
+       this.weight=weight;
     }
 
     getWeight(): number {

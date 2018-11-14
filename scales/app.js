@@ -26,9 +26,9 @@ var Scales = /** @class */ (function () {
         return (sumScale);
     };
     Scales.prototype.getNameList = function () {
-        var nameList = "";
+        var nameList = [];
         for (var i = 0; i < this.products.length; i++) {
-            nameList += this.products[i].getName() + ";  ";
+            nameList.push(this.products[i].getName());
         }
         return (nameList);
     };

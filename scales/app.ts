@@ -1,7 +1,5 @@
 
 class Scales {
-    nameProduct: string;
-    weight: number;
     products: Array<Product> = [];
 
 
@@ -16,10 +14,10 @@ class Scales {
         }
         return (sumScale);
     }
-    getNameList(): string {
-        let nameList: string = "";
+    getNameList(): Array<String> {
+        let nameList: Array<String> = [];
         for (let i: number = 0; i < this.products.length; i++) {
-            nameList += this.products[i].getName() + ";  ";
+            nameList.push(this.products[i].getName() )
         }
         return (nameList);
     }
@@ -51,8 +49,7 @@ class Product {
 
 
 class Tomato extends Product {
-    nameProduct: string;
-    weight: number;
+   
     constructor(nameProduct: string, weight: number) {
         super(nameProduct, weight);
 
@@ -61,8 +58,7 @@ class Tomato extends Product {
 
 class Apple extends Product {
 
-    nameProduct: string;
-    weight: number;
+  
 
     constructor(nameProduct: string, weight: number) {
         super(nameProduct, weight);

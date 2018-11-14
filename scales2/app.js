@@ -1,16 +1,3 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    }
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 var Scales = /** @class */ (function () {
     function Scales() {
         this.products = [];
@@ -34,23 +21,11 @@ var Scales = /** @class */ (function () {
     };
     return Scales;
 }());
-var Product = /** @class */ (function () {
-    function Product(nameProduct, weight) {
+var Tomato = /** @class */ (function () {
+    function Tomato(nameProduct, weight) {
+        this.products = [];
         this.nameProduct = nameProduct;
         this.weight = weight;
-    }
-    Product.prototype.getWeight = function () {
-        return (this.weight);
-    };
-    Product.prototype.getName = function () {
-        return (this.nameProduct);
-    };
-    return Product;
-}());
-var Tomato = /** @class */ (function (_super) {
-    __extends(Tomato, _super);
-    function Tomato(nameProduct, weight) {
-        return _super.call(this, nameProduct, weight) || this;
     }
     Tomato.prototype.getWeight = function () {
         return (this.weight);
@@ -59,11 +34,12 @@ var Tomato = /** @class */ (function (_super) {
         return (this.nameProduct);
     };
     return Tomato;
-}(Product));
-var Apple = /** @class */ (function (_super) {
-    __extends(Apple, _super);
+}());
+var Apple = /** @class */ (function () {
     function Apple(nameProduct, weight) {
-        return _super.call(this, nameProduct, weight) || this;
+        this.products = [];
+        this.nameProduct = nameProduct;
+        this.weight = weight;
     }
     Apple.prototype.getWeight = function () {
         return (this.weight);
@@ -72,7 +48,7 @@ var Apple = /** @class */ (function (_super) {
         return (this.nameProduct);
     };
     return Apple;
-}(Product));
+}());
 var Scales1 = new Scales();
 var Tomato1 = new Tomato("Красный томат", 18);
 var Tomato2 = new Tomato("Желтый томат", 18);
