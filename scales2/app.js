@@ -13,9 +13,9 @@ var Scales = /** @class */ (function () {
         return (sumScale);
     };
     Scales.prototype.getNameList = function () {
-        var nameList = "";
+        var nameList = [];
         for (var i = 0; i < this.products.length; i++) {
-            nameList += this.products[i].getName() + ";  ";
+            nameList.push(this.products[i].getName());
         }
         return (nameList);
     };
@@ -23,7 +23,6 @@ var Scales = /** @class */ (function () {
 }());
 var Tomato = /** @class */ (function () {
     function Tomato(nameProduct, weight) {
-        this.products = [];
         this.nameProduct = nameProduct;
         this.weight = weight;
     }
@@ -37,7 +36,6 @@ var Tomato = /** @class */ (function () {
 }());
 var Apple = /** @class */ (function () {
     function Apple(nameProduct, weight) {
-        this.products = [];
         this.nameProduct = nameProduct;
         this.weight = weight;
     }

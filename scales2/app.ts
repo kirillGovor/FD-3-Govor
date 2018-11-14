@@ -1,5 +1,4 @@
 interface IScalable {
-    products: Array<IScalable> ;
     getWeight(): number;
     getName(): string;
 }
@@ -18,10 +17,10 @@ class Scales {
         }
         return (sumScale);
     }
-    getNameList(): string {
-        let nameList: string = "";
+    getNameList(): Array<String> {
+        let nameList: Array<String> = [];
         for (let i: number = 0; i < this.products.length; i++) {
-            nameList += this.products[i].getName() + ";  ";
+            nameList.push(this.products[i].getName() )
         }
         return (nameList);
     }
@@ -35,7 +34,6 @@ class Scales {
 class Tomato  implements IScalable {
     nameProduct: string;
     weight: number;
-    products: Array<IScalable> = [];
     constructor(nameProduct: string, weight: number) {
         this.nameProduct=nameProduct;
         this.weight=weight;
@@ -52,7 +50,6 @@ class Tomato  implements IScalable {
 }
 
 class Apple  implements IScalable {
-    products: Array<IScalable> = [];
     nameProduct: string;
     weight: number;
 
