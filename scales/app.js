@@ -12,32 +12,41 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 var Scales = /** @class */ (function () {
-    function Scales(nameProduct, weight) {
-        this.nameProduct = nameProduct;
-        this.weight = weight;
-        this.products = this.products;
+    function Scales() {
+        this.products = [];
     }
-    Scales.prototype.add = function (Product) {
-        var name = this.nameProduct;
-        var weight = this.weight;
-        this.products.push(Product);
-        console.log(this.products);
+    Scales.prototype.add = function (p) {
+        this.products.push(p);
+    };
+    Scales.prototype.getSumScale = function () {
+        var sumScale = 0;
+        for (var i = 0; i < this.products.length; i++) {
+            sumScale += this.products[i].getWeight();
+        }
+        return (sumScale);
+    };
+    Scales.prototype.getNameList = function () {
+        var nameList = "";
+        for (var i = 0; i < this.products.length; i++) {
+            nameList += this.products[i].getName() + ";  ";
+        }
+        return (nameList);
     };
     return Scales;
 }());
-var Product = /** @class */ (function (_super) {
-    __extends(Product, _super);
+var Product = /** @class */ (function () {
     function Product(nameProduct, weight) {
-        return _super.call(this, nameProduct, weight) || this;
+        this.nameProduct = nameProduct;
+        this.weight = weight;
     }
     Product.prototype.getWeight = function () {
-        console.log(this.weight);
+        return (this.weight);
     };
     Product.prototype.getName = function () {
-        console.log(this.nameProduct);
+        return (this.nameProduct);
     };
     return Product;
-}(Scales));
+}());
 var Tomato = /** @class */ (function (_super) {
     __extends(Tomato, _super);
     function Tomato(nameProduct, weight) {
@@ -52,25 +61,27 @@ var Apple = /** @class */ (function (_super) {
     }
     return Apple;
 }(Product));
-var Scales1 = new Scales("1", 2);
+var Scales1 = new Scales();
 var Tomato1 = new Tomato("Красный томат", 18);
 var Tomato2 = new Tomato("Желтый томат", 18);
 var Apple1 = new Apple("Красное яблоко", 12);
 var Apple2 = new Apple("Зеленое яблоко", 15);
 //Tomato1.add();
-Tomato1.getName();
-Tomato1.getWeight();
+console.log(Tomato1.getName());
+console.log(Tomato1.getWeight());
 Scales1.add(Tomato1);
 //Tomato2.add();
-Tomato2.getName();
-Tomato2.getWeight();
+console.log(Tomato2.getName());
+console.log(Tomato2.getWeight());
 Scales1.add(Tomato2);
 //Apple1.add();
-Apple1.getName();
-Apple1.getWeight();
+console.log(Apple1.getName());
+console.log(Apple1.getWeight());
 Scales1.add(Apple1);
 //Apple2.add();
-Apple2.getName();
-Apple2.getWeight();
+console.log(Apple2.getName());
+console.log(Apple2.getWeight());
 Scales1.add(Apple2);
+console.log(Scales1.getSumScale());
+console.log(Scales1.getNameList());
 //# sourceMappingURL=app.js.map

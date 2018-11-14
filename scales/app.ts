@@ -2,38 +2,46 @@
 class Scales {
     nameProduct:string;
     weight:number;
-    products:Product[];
+    products:Array<Product>=[];
     
-    constructor(nameProduct:string,weight:number) {
-        this.nameProduct=nameProduct;
-        this.weight=weight;
-        this.products=this.products
+
+
+    public add(p:Product):void{
+        this.products.push(p)
     }
-
-
-    public add(Product){
-       var name= this.nameProduct;
-       var weight = this.weight;
-       this.products.push(Product)
-        console.log(this.products);
+    getSumScale():number{
+       let sumScale:number=0;
+       for (let i:number=0;i<this.products.length;i++){
+        sumScale+=this.products[i].getWeight();
+       }
+       return(sumScale);
+    }
+    getNameList():string{
+        let nameList:string="";
+        for (let i:number=0;i<this.products.length;i++){
+            nameList+=this.products[i].getName()+";  ";
+        }
+        return(nameList);
     }
 }
 
 
-class Product extends Scales {
-    constructor(nameProduct:string,weight:number) { 
-       super(nameProduct,weight);
-    }
+class Product {
     weight:number;
     nameProduct:string;
+    constructor(nameProduct:string,weight:number) { 
+        this.nameProduct= nameProduct;
+        this.weight=  weight;
+    }
+   
     
 
-public getWeight (){
-    console.log(this.weight)
+public getWeight():number{
+   return(this.weight)
 
 }
-public getName(){
-    console.log(this.nameProduct)
+public getName():string{
+    return(this.nameProduct)
     
 }
     
@@ -61,7 +69,7 @@ class Apple extends Product {
     }
 }
 
-let Scales1:Scales=new Scales("1",2);
+let Scales1:Scales=new Scales();
 
 let Tomato1:Tomato=new Tomato("Красный томат",18);
 let Tomato2:Tomato=new Tomato("Желтый томат",18);
@@ -72,29 +80,29 @@ let Apple2:Apple=new Apple("Зеленое яблоко",15);
 
 
 //Tomato1.add();
-Tomato1.getName();
-Tomato1.getWeight();
+console.log(Tomato1.getName());
+console.log(Tomato1.getWeight());
 Scales1.add(Tomato1);
 
 
 
 //Tomato2.add();
-Tomato2.getName();
-Tomato2.getWeight();
+console.log(Tomato2.getName());
+console.log(Tomato2.getWeight());
 Scales1.add(Tomato2);
 
 //Apple1.add();
-Apple1.getName();
-Apple1.getWeight();
+console.log(Apple1.getName());
+console.log(Apple1.getWeight());
 Scales1.add(Apple1);
 
 //Apple2.add();
-Apple2.getName();
-Apple2.getWeight();
+console.log(Apple2.getName());
+console.log(Apple2.getWeight());
 Scales1.add(Apple2);
 
 
+console.log(Scales1.getSumScale());
 
-
-
+console.log(Scales1.getNameList());
 
