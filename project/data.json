@@ -1,11 +1,11 @@
 [
-    {"block":"Диван","code":"sofa","cost":1500,"url":"sofa.jpg","kolvo":10},
+    {"block":"Диван","code":"sofa","cost":1500,"url":"img/sofa/red_sofa.jpg","kolvo":10},
     {"block":"Стул","code":"sit","cost":300,"url":"sit.jpg","kolvo":15},
     {"block":"Стол","code":"table","cost":700,"url":"table.jpg","kolvo":456},
 
-    {"block":"Стол","code":"table1","cost":700,"url":"table.jpg","kolvo":456},
-    {"block":"Стол","code":"table2","cost":800,"url":"table.jpg","kolvo":456},
-    {"block":"Стол","code":"table3","cost":900,"url":"table.jpg","kolvo":456},
+    {"block":"Стол","code":"table1","cost":700,"url":"img/table/bar_table.jpeg","kolvo":456},
+    {"block":"Стол","code":"table2","cost":800,"url":"img/table/computer_table.jpg","kolvo":456},
+    {"block":"Стол","code":"table3","cost":900,"url":"img/table/glass_table.jpg","kolvo":456},
     {"block":"Стол","code":"table4","cost":1000,"url":"table.jpg","kolvo":456},
     {"block":"Стол","code":"table5","cost":50,"url":"table.jpg","kolvo":456},
     {"block":"Стол","code":"table6","cost":600,"url":"table.jpg","kolvo":456},
