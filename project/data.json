@@ -1,0 +1,55 @@
+[
+    {"block":"Диван","code":"sofa","cost":1500,"url":"sofa.jpg","kolvo":10},
+    {"block":"Стул","code":"sit","cost":300,"url":"sit.jpg","kolvo":15},
+    {"block":"Стол","code":"table","cost":700,"url":"table.jpg","kolvo":456},
+
+    {"block":"Стол","code":"table1","cost":700,"url":"table.jpg","kolvo":456},
+    {"block":"Стол","code":"table2","cost":800,"url":"table.jpg","kolvo":456},
+    {"block":"Стол","code":"table3","cost":900,"url":"table.jpg","kolvo":456},
+    {"block":"Стол","code":"table4","cost":1000,"url":"table.jpg","kolvo":456},
+    {"block":"Стол","code":"table5","cost":50,"url":"table.jpg","kolvo":456},
+    {"block":"Стол","code":"table6","cost":600,"url":"table.jpg","kolvo":456},
+    {"block":"Стол","code":"table7","cost":400,"url":"table.jpg","kolvo":456},
+    {"block":"Стол","code":"table8","cost":300,"url":"table.jpg","kolvo":456},
+    {"block":"Стол","code":"table9","cost":200,"url":"table.jpg","kolvo":456},
+    {"block":"Стол","code":"table10","cost":100,"url":"table.jpg","kolvo":456},
+    {"block":"Стол","code":"table11","cost":1100,"url":"table.jpg","kolvo":456},
+    {"block":"Стол","code":"table12","cost":2700,"url":"table.jpg","kolvo":456},
+    {"block":"Стол","code":"table13","cost":3700,"url":"table.jpg","kolvo":456},
+    {"block":"Стол","code":"table14","cost":4700,"url":"table.jpg","kolvo":456},
+    {"block":"Стол","code":"table15","cost":5700,"url":"table.jpg","kolvo":456},
+
+    {"block":"Стол","code":"sofa1","cost":400,"url":"sofa.jpg","kolvo":456},
+    {"block":"Стол","code":"sofa2","cost":300,"url":"sofa.jpg","kolvo":456},
+    {"block":"Стол","code":"sofa3","cost":200,"url":"sofa.jpg","kolvo":456},
+    {"block":"Стол","code":"sofa4","cost":100,"url":"sofa.jpg","kolvo":456},
+    {"block":"Стол","code":"sofa5","cost":1100,"url":"sofa.jpg","kolvo":456},
+    {"block":"Стол","code":"sofa6","cost":2700,"url":"sofa.jpg","kolvo":456},
+    {"block":"Стол","code":"sofa7","cost":3700,"url":"sofa.jpg","kolvo":456},
+    {"block":"Стол","code":"sofa8","cost":4700,"url":"sofa.jpg","kolvo":456},
+    {"block":"Стол","code":"sofa9","cost":5700,"url":"sofa.jpg","kolvo":456},
+
+    {"block":"Стол","code":"sit1","cost":400,"url":"sit.jpg","kolvo":456},
+    {"block":"Стол","code":"sit2","cost":300,"url":"sit.jpg","kolvo":456},
+    {"block":"Стол","code":"sit3","cost":200,"url":"sit.jpg","kolvo":456},
+    {"block":"Стол","code":"sit4","cost":100,"url":"sit.jpg","kolvo":456},
+    {"block":"Стол","code":"sit5","cost":1100,"url":"sit.jpg","kolvo":456},
+    {"block":"Стол","code":"sit6","cost":2700,"url":"sit.jpg","kolvo":456},
+    {"block":"Стол","code":"sit7","cost":3700,"url":"sit.jpg","kolvo":456},
+    {"block":"Стол","code":"sit8","cost":4700,"url":"sit.jpg","kolvo":456},
+    {"block":"Стол","code":"sit9","cost":5700,"url":"sit.jpg","kolvo":456},
+
+
+
+
+
+    {"block":"Стол","code":"sit11","cost":400,"url":"sit.jpg","kolvo":456},
+    {"block":"Стол","code":"sit22","cost":300,"url":"sit.jpg","kolvo":456},
+    {"block":"Стол","code":"sit33","cost":200,"url":"sit.jpg","kolvo":456},
+    {"block":"Стол","code":"sit44","cost":100,"url":"sit.jpg","kolvo":456},
+    {"block":"Стол","code":"sit55","cost":1100,"url":"sit.jpg","kolvo":456},
+    {"block":"Стол","code":"sit66","cost":2700,"url":"sit.jpg","kolvo":456},
+    {"block":"Стол","code":"sit77","cost":3700,"url":"sit.jpg","kolvo":456},
+    {"block":"Стол","code":"sit88","cost":4700,"url":"sit.jpg","kolvo":456},
+    {"block":"Стол","code":"sit99","cost":5700,"url":"sit.jpg","kolvo":456}
+]
