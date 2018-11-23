@@ -7,30 +7,33 @@ interface IstorageEngine {
 class Scales<StorageEngine extends IstorageEngine> {
     storageEngine: StorageEngine;
 
-    constructor(storageEngine: StorageEngine) {
-        this.storageEngine = storageEngine;
-    }
+   
     add(p: Product): void {
 
         this.storageEngine.addItem(p);
     }
+
     getSumScale(): number {
         let sumScale: number = 0;
-        let storage: Product;
-        for (let i: number = 0; i < 15; i++) { //временно 15
-            storage = this.storageEngine.getItem(i);
-            sumScale += storage.getWeight();
+        let product: Product;
+        for (let i: number = 0; i < this.storageEngine.length; i++) { //временно 15
+            product = this.storageEngine.getItem(i);
+            sumScale += product.getWeight();
         }
         return (sumScale);
     }
+
     getNameList(): Array<String> {
         let nameList: Array<String> = [];
-        let storage: Product;
-        for (let i: number = 0; i < 15; i++) { // временно 15
-            storage = this.storageEngine.getItem(i);
-            nameList.push(storage.getName());
+        let product: Product;
+        for (let i: number = 0; i < this.storageEngine.length; i++) { // временно 15
+            product = this.storageEngine.getItem(i);
+            nameList.push(product.getName());
         }
         return (nameList);
+    }
+    constructor(storageEngine: StorageEngine) {
+        this.storageEngine = storageEngine;
     }
 }
 
@@ -89,14 +92,11 @@ class ScalesStorageEngineArray {
     }
 }
 
+let   storageEngine: Array<StorageEngine>;
 
 
-class StorageEngine {
- 
-}
-
-let Scales1: Scales<ScalesStorageEngineLocalStorage> = new Scales(StorageEngine);
-let Scales2: Scales<ScalesStorageEngineArray> = new Scales(StorageEngine);
+let Scales1: Scales<ScalesStorageEngineLocalStorage> = new Scales(storageEngine);
+let Scales2: Scales<ScalesStorageEngineArray> = new Scales(storageEngine);
 
 let product1: Product = new Product("Продукт1", 1);
 let product2: Product = new Product("Продукт2", 2);
