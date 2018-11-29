@@ -52,21 +52,18 @@ class Tovar extends React.Component{
 
        
 
-        return (<tbody id={ this.props.block} onClick={this.color} key ={this.props.code} className="block">
-        <tr id={"color"+this.props.code} onClick={this.color} className={(this.props.atr == this.props.ishop.code)?'background':null}>
-        <td id={this.props.code} className="Count">{this.props.code}</td>
-        <td id={this.props.code} className="Count">{this.props.block}</td>
-        <td  id={this.props.code} ><img id={this.props.code} className="Count" src={this.props.url} width={100} height={100}></img></td>
-        <td id={this.props.code} className="Count" >{this.props.cost}</td>
-        <td id={this.props.code} className="Count">{this.props.kolvo}</td>
-        <td id={this.props.code} className="Count">
+        return (<div id={ this.props.block} onClick={this.color} key ={this.props.code} className="block">
+        <p id={"color"+this.props.code} onClick={this.color} className={(this.props.atr == this.props.ishop.code)?'background':null}></p>
+        <p id={this.props.code} className="Count">{"Продукт: "+this.props.block}</p>
+        <p className="imgProduct" id={this.props.code} ><img id={this.props.code} className="imgProduct" src={this.props.url} ></img></p>
+        <p id={this.props.code} className="Count" >{"Цена "+this.props.cost}</p>
+        <p id={this.props.code} className="Count">{"количество: "+this.props.kolvo}</p>
+        <div id={this.props.code} className="buttonsBlock">
         <input id={this.props.code} className="input" value="edit" type="submit" onClick={this.edit }></input>
         <input id={this.props.code} className="input" value="delete" type="submit" onClick={this.delete }>
-        </input></td>
+        </input></div></div>
 
-        </tr>
-        </tbody>
-        );
+        )
       }
     
     

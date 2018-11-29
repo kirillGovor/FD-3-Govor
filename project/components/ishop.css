@@ -20,3 +20,27 @@
     opacity: .5;
   pointer-events: none;
 }
+.block{
+    display: flex;
+    flex-direction: column;
+  justify-content: space-between;
+  height: 500px;
+  width: 250px;
+  margin: auto;
+  background-color: aqua;
+  border-radius: 20px;
+  border:solid 1px black;
+  margin-bottom: 10px;
+}
+.imgProduct{
+    width: 100%;
+}
+.buttonsBlock{
+    width: 100px;
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+p{
+    text-align: center;
+}

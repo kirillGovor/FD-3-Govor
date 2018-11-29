@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import './ishop.css';
 import Edit from './edit';
 import Tovar from './Tovar';
-
+import { DragDropContext } from 'react-beautiful-dnd';
 
 
 class Ishop extends React.Component {
@@ -148,7 +148,7 @@ add=(Name,price,url,quantity,id,contain)=>{
         {this.props.MainText}
         </div>
         <table className="table">
-        <tbody className="block">
+        <tbody className="">
         <tr className="tr">
         <td className="Count" key={"MainTr"+0}>id:</td>
         <td className="Count" key={"MainTr"+1}>Название:</td>
@@ -158,8 +158,9 @@ add=(Name,price,url,quantity,id,contain)=>{
         <td className="Count" key={"MainTr"+5}>Свойства:</td>
         </tr>
         </tbody>
-        {catalogCode}
         </table> 
+        {catalogCode}
+        
         <div className="Newproduct"><input type="submit" value={"NewProduct"} onClick={this.newProduct}></input> </div>
         <div>
         
