@@ -1,28 +1,70 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import './store.js';
+import { Provider } from 'react-redux';
+import { connect } from 'react-redux';
+import { setFilms } from './actions/films';
+//import films from './films.json';
+import axios from 'axios';
+import { Menu } from 'semantic-ui-react'
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+
+
+  componentWillMount() {
+    const { setFilms } = this.props;
+    axios.get('/films.json').then(response => {
+     setFilms(response.data);
+
+    });
   }
+
+
+  render() {
+    const { films,isReady } = this.props;
+    return (
+     <div>
+      <div>
+         <Menu>
+        <Menu.Item name='browse'  onClick={this.handleItemClick}>
+          Browse
+        </Menu.Item>
+
+        <Menu.Item name='submit' onClick={this.handleItemClick}>
+          Submit
+        </Menu.Item>
+
+        <Menu.Menu position='right'>
+          <Menu.Item name='signup'  onClick={this.handleItemClick}>
+            Sign Up
+          </Menu.Item>
+
+          <Menu.Item name='help' onClick={this.handleItemClick}>
+            Help
+          </Menu.Item>
+        </Menu.Menu>
+      </Menu>
+      </div>
+      <ul>
+        {!isReady ? 'loading...' 
+          : films.map(film => (
+            <li key={film.id}><b>{film.title}</b>-{film.author}</li>
+          ))
+        }
+     </ul>
+     </div>
+    )
+  }
+
 }
 
-export default App;
+const mapStateToProps = ({ films }) => ({
+  films: films.films,
+  isReady: films.isReady,
+});
+const mapDispatchToProps = dispatch => ({
+  setFilms: films => dispatch(setFilms(films))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
