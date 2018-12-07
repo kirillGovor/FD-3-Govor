@@ -7,30 +7,33 @@ interface IstorageEngine {
 class Scales<StorageEngine extends IstorageEngine> {
     storageEngine: StorageEngine;
 
-    constructor(storageEngine: StorageEngine) {
-        this.storageEngine = storageEngine;
-    }
+   
     add(p: Product): void {
 
         this.storageEngine.addItem(p);
     }
+
     getSumScale(): number {
         let sumScale: number = 0;
-        let storage: Product;
-        for (let i: number = 0; i < 15; i++) { //временно 15
-            storage = this.storageEngine.getItem(i);
-            sumScale += storage.getWeight();
+        let product: Product;
+        for (let i: number = 0; i <  storageEngine.length; i++) { //временно 15
+            product = this.storageEngine.getItem(i);
+            sumScale += product.getWeight();
         }
         return (sumScale);
     }
+
     getNameList(): Array<String> {
         let nameList: Array<String> = [];
-        let storage: Product;
-        for (let i: number = 0; i < 15; i++) { // временно 15
-            storage = this.storageEngine.getItem(i);
-            nameList.push(storage.getName());
+        let product: Product;
+        for (let i: number = 0; i < storageEngine.length; i++) { // временно 15
+            product = this.storageEngine.getItem(i);
+            nameList.push(product.getName());
         }
         return (nameList);
+    }
+    constructor(storageEngine: StorageEngine) {
+        this.storageEngine = storageEngine;
     }
 }
 
@@ -89,14 +92,11 @@ class ScalesStorageEngineArray {
     }
 }
 
+let   storageEngine:ScalesStorageEngineArray;
+let   storageEngine1:ScalesStorageEngineLocalStorage;
 
-
-class StorageEngine {
- 
-}
-
-let Scales1: Scales<ScalesStorageEngineLocalStorage> = new Scales(StorageEngine);
-let Scales2: Scales<ScalesStorageEngineArray> = new Scales(StorageEngine);
+//let Scales1: Scales<ScalesStorageEngineLocalStorage> = new Scales(storageEngine1);
+let Scales1: Scales<ScalesStorageEngineArray> = new Scales(storageEngine);
 
 let product1: Product = new Product("Продукт1", 1);
 let product2: Product = new Product("Продукт2", 2);
@@ -105,12 +105,12 @@ let product3: Product = new Product("Продукт3", 3);
 
 Scales1.add(product1);
 Scales1.add(product3);
-Scales2.add(product1);
-Scales2.add(product2);
+//Scales2.add(product1);
+//Scales2.add(product2);
 
 console.log(Scales1.getSumScale());
 console.log(Scales1.getNameList());
 
 
-console.log(Scales2.getSumScale());
-console.log(Scales2.getNameList());
+//console.log(Scales2.getSumScale());
+//console.log(Scales2.getNameList());
