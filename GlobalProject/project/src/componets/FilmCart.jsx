@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card, Icon, Image,Button } from 'semantic-ui-react';
 
+
 const FilmCard = (film) => {
   const {title,author,price,image,addToCart,text,addedCount } = film;
  return (
