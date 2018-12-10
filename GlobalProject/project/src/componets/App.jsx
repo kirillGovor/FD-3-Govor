@@ -17,13 +17,13 @@ class App extends Component {
     const { setFilms } = this.props;
     axios.get('/films.json').then(response => {
      setFilms(response.data);
-
+   
     });
   }
-
+ 
 
   render() {
-    const { films,isReady, setSort,addToCart, } = this.props;
+    const { films,isReady, setSort,addToCart,removeFromCart } = this.props;
     return (
      <Container>
       <div>
@@ -32,7 +32,7 @@ class App extends Component {
       </div>
       <Card.Group itemsPerRow={4}>
       {!isReady ? 'loading...'   : films.map(film => (
-            <FilmCard  {...film} addToCart={addToCart} key={film.id} />
+            <FilmCard  {...film} addToCart={addToCart} removeFromCart={removeFromCart} key={film.id} />
           ))
         }
       </Card.Group>
