@@ -10,12 +10,15 @@ import FilmCard from './FilmCart';
 import { Card } from 'semantic-ui-react';
 import Sort from '../containers/Sort';
 import Menu from '../containers/Menu';
+import Films from '../film'
+
+
 
 
 class App extends Component {
   componentWillMount() {
     const { setFilms } = this.props;
-    axios.get('/films.json').then(response => {
+    axios.get('./films.json').then(response => {
      setFilms(response.data);
    
     });
@@ -32,11 +35,13 @@ class App extends Component {
       </div>
       <Card.Group itemsPerRow={4}>
       {!isReady ? 'loading...'   : films.map(film => (
-            <FilmCard  {...film} addToCart={addToCart} removeFromCart={removeFromCart} key={film.id} />
+            <FilmCard  {...film} addToCart={addToCart} removeFromCart={removeFromCart} key={film.id} />//,
+            //<Films {...film} addToCart={addToCart} removeFromCart={removeFromCart} key={film.id} ></Films>
           ))
         }
       </Card.Group>
-     
+    
+
      </Container>
     )
   }

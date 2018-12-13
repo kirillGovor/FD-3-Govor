@@ -1,8 +1,9 @@
 import React from 'react';
 import { Menu, Button, Image, List, Popup } from 'semantic-ui-react';
-
-
+import {Link } from 'react-router';
+import Film from '../film'
     const CartComponent = ({title,id, image, removeFromCart }) => (
+      
       <List  selection divided verticalAlign="middle">
       <List.Item >
         <List.Content  floated="right">
@@ -11,18 +12,28 @@ import { Menu, Button, Image, List, Popup } from 'semantic-ui-react';
           </Button>
         </List.Content>
         <Image  avatar src={image} />
+        <Link className="header" to={{
+        pathname: "/basket ",
+        state: { title:{title},id:{id}, image:{image}, removeFromCart:{removeFromCart} }
+      }} >
         <List.Content>{title}</List.Content>
+        </Link>
       </List.Item>
     </List>
+      
+      
+     
+    
     );
 
 
     const MenuComponent = ({totalPrice, inBasket, items}) => (
         <Menu >
-        <Menu.Item name='browse'  >
-          Магазин фильмов
+         <Link to="/">
+        <Menu.Item name='browse'  > 
+        Магазин фильмов
         </Menu.Item>
-
+        </Link>
     
         <Menu.Menu position='right' >
           <Menu.Item name='signup' >
