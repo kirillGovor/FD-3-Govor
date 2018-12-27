@@ -1,6 +1,19 @@
-body{
-    margin-top:20px;
-  }
+
   .menu{
     margin-bottom: 10px;
+    margin-top:10px ;
+  }
+  body{
+    margin-top: 10px;
+    
+  }
+
+  .login{
+    text-align: center;
+   
+  }
+  .ui.secondary.menu {
+    background: white;
+    margin-bottom: 10px;
+    margin-top: 0;
   }

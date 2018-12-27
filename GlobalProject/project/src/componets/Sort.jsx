@@ -9,6 +9,7 @@ const Sort = ({setSort, SortBy, searchQuery,setSeatchQuery}) => {
 
 
   return (
+    <div>
   <Menu secondary>
         <Menu.Item name='all' active={SortBy === 'all'} 
         onClick={setSort.bind(this, "all")} >Все</Menu.Item>
@@ -39,6 +40,15 @@ const Sort = ({setSort, SortBy, searchQuery,setSeatchQuery}) => {
              placeholder='Поиск...' />
             </Menu.Item>
       </Menu>
+
+      
+            <Input  className="seachMobile"
+            onChange={e => setSeatchQuery(e.target.value)}
+             value={searchQuery} 
+             icon='search' 
+             placeholder='Поиск...' />
+            
+</div>
       )
   };
 

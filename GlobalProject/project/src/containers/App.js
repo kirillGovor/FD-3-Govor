@@ -4,7 +4,7 @@ import App from '../componets/App';
 import * as  SortActions  from '../actions/Sort';
 import {bindActionCreators} from 'redux';
 import orderBy from 'lodash/orderBy';
-
+import films from '../film';
 const sortBy = (films, SortBy) => {
   
   switch (SortBy){

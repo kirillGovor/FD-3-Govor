@@ -8,3 +8,6 @@ export const addToCart= (obj) => ({
         type:'REMOVE_FILM_FROM_CART',
         payload: id
         });
+
+
+      

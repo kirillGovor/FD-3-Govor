@@ -1,37 +1,73 @@
-import React from 'react'
-import { Link } from 'react-router';
-import { Menu, Button, Image, List, Popup, Card, Icon, Container } from 'semantic-ui-react';
-import { hashHistory, Route, Router } from 'react-router';
-import Menux from './containers/Menu';
+import React, { Component } from 'react';
+import './store.js';
+
+//import films from './films.json';
+import axios from 'axios';
+import * as films from './actions/films'
+import { Container } from 'semantic-ui-react';
+
+import { Card } from 'semantic-ui-react';
+import Sort from './containers/Sort';
+import Menu from './containers/Menu';
+import Film from './containers/film';
 
 
-const Film = ({ title, id, image, author, text, price }) => (
-  <Container>
-    <Menux />
 
-    <Card >
+var setFilms = films.setFilms
 
-      <Image src={image} />
+class film extends Component {
+  componentWillMount() {
+    var setFilms = films.setFilms
 
-      <Card.Content>
-        <Card.Header>{title}</Card.Header>
+    axios.get('./films.json').then(response => {
+      var filmsk = setFilms(response.data);
+      var films = filmsk.payload;
+      this.setState({
+        films: films,
+      });
+    });
+  }
 
-        <Card.Meta>
-          <span className='date'>{author}</span>
-        </Card.Meta>
 
-        <Card.Description>{text}</Card.Description>
-      
-      
-      </Card.Content>
-      <Card.Content extra>
-        <Icon name='dollar' />
-        {price}
 
-      </Card.Content>
+  render() {
 
-    </Card>
-  </Container>
-);
+    let jouke; //говнокод, но работает
+    const { k, films, isReady, setSort, addToCart, removeFromCart } = this.props;
+    var s = this.state || null
+    var id = this.props.location.pathname.slice();
+    id = id.replace(/[^-0-9]/gim, '');
+    if (s != null) {
+      for (var i = 0; i < s.films.length; i++) {
+        if (s.films[i].id == id) {
+           jouke = s.films[i];
+        }
+      }
+    }
+   
 
-export default Film;
+
+    return (
+      <Container>
+        <div>
+          <Menu />
+         
+        </div>
+        <Card.Group itemsPerRow={4}>
+        
+
+            <Film  {...jouke} addToCart={addToCart} removeFromCart={removeFromCart} key={film.id} />
+
+          
+          
+        </Card.Group>
+
+
+      </Container>
+    )
+  }
+
+}
+
+
+export default film;

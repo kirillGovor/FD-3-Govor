@@ -1,65 +1,93 @@
+import '../App.css';
 import React from 'react';
 import { Menu, Button, Image, List, Popup } from 'semantic-ui-react';
-import {Link } from 'react-router';
+import { Link } from 'react-router';
 import Film from '../film'
-    const CartComponent = ({title,id, image, removeFromCart }) => (
-      
-      <List  selection divided verticalAlign="middle">
-      <List.Item >
-        <List.Content  floated="right">
-          <Button  onClick={removeFromCart.bind(this,id)} color="red">
-            Удалить
+
+const CartComponent = ({ title, id, image, removeFromCart }) => (
+
+  <List selection divided verticalAlign="middle">
+    <List.Item >
+      <List.Content floated="right">
+        <Button onClick={removeFromCart.bind(this, id)} color="red">
+          Удалить
           </Button>
-        </List.Content>
-        <Image  avatar src={image} />
-        <Link className="header" to={{
-        pathname: "/basket ",
-        state: { title:{title},id:{id}, image:{image}, removeFromCart:{removeFromCart} }
-      }} >
+      </List.Content>
+      <Image avatar src={image} />
+      <Link to={`/film${id}`}>
+
         <List.Content>{title}</List.Content>
-        </Link>
-      </List.Item>
-    </List>
-      
-      
-     
-    
-    );
+      </Link>
+    </List.Item>
+  </List>
 
 
-    const MenuComponent = ({totalPrice, inBasket, items}) => (
-        <Menu >
-         <Link to="/">
-        <Menu.Item name='browse'  > 
-        Магазин фильмов
-        </Menu.Item>
-        </Link>
-    
-        <Menu.Menu position='right' >
-          <Menu.Item name='signup' >
-            Итого: &nbsp; <i>{totalPrice}</i> $
-          </Menu.Item>
 
 
-          <Popup
-      trigger={
-
-        <Menu.Item name='basket' >
-            Корзина <i>({inBasket||"0"})</i>
-          </Menu.Item>
-      }
-      content={items.map(film => <CartComponent key={film.id} {...film}/>)}
-      on='click'
-      hideOnScroll
-    >
+);
+const Login =(user)=>{
+  if (user!=undefined){
+    let loginUser=user;
+    return loginUser;
+  }
+   else{
+    return undefined;
+   }
   
-    </Popup>
+}
+
+const MenuComponent = ({ totalPrice, inBasket, items,user,userName,User }) => (
+  
+  <Menu >
+
+    <Menu.Item name='browse'  >
+      <Link to="/">  Магазин фильмов</Link>
+    </Menu.Item>
+
+  
+
+    <Menu.Menu position='right' >
+
     
+
+
+
+
+      
+      <Link to={`/login`}>
+      <Menu.Item>
+        <Button >
+        {Login(user) || "Войти"}
+        </Button>
+      </Menu.Item>
+      </Link>
+
+      <Menu.Item name='signup' >
+        Итого: &nbsp; <i>{totalPrice}</i> $
+          </Menu.Item>
+
      
-    
-         
-        </Menu.Menu>
-      </Menu>
-    );
+
+      <Popup
+        trigger={
+
+          <Menu.Item name='basket' >
+            Корзина <i>({inBasket || "0"})</i>
+          </Menu.Item>
+        }
+
+        content={items.map(film => <CartComponent key={film.id} {...film} />)}
+        on='click'
+        hideOnScroll
+      >
+
+      </Popup>
+
+
+
+
+    </Menu.Menu>
+  </Menu>
+);
 export default MenuComponent;
 

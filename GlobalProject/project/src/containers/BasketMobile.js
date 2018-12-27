@@ -1,9 +1,8 @@
-import Menu from '../componets/Menu';
+import Basket from '../componets/BasketMobile';
 import { connect } from 'react-redux';
 import * as  CartActions  from '../actions/cart';
 import {bindActionCreators} from 'redux'
 import uniqBy from 'lodash/uniqBy'
-import { Card } from 'semantic-ui-react';
 
 
 const mapStateToProps = ({ cart }) => ({
@@ -16,7 +15,7 @@ const mapStateToProps = ({ cart }) => ({
     ...bindActionCreators(CartActions,dispatch)
   });
   
-  export default connect(mapStateToProps, mapDispatchToProps)(Menu);
+  export default connect(mapStateToProps, mapDispatchToProps)(Basket);
   
 
 
