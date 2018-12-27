@@ -19,7 +19,7 @@ const FilmCard = (film) => {
             <Item.Meta><p>{text}</p>
               <Link to="/"><br></br><br></br>
                 <Button  primary>
-                  Вернуться  </Button>
+                  Вернуться </Button>
               </Link>
             </Item.Meta>
 
