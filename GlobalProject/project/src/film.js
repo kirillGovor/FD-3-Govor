@@ -7,7 +7,6 @@ import * as films from './actions/films'
 import { Container } from 'semantic-ui-react';
 
 import { Card } from 'semantic-ui-react';
-import Sort from './containers/Sort';
 import Menu from './containers/Menu';
 import Film from './containers/film';
 
@@ -32,15 +31,15 @@ class film extends Component {
 
   render() {
 
-    let jouke; //говнокод, но работает
+    let Newfilm; // т.к. я через редьюсер перекинуть не могу а c hash-router так и не разобрался
     const { k, films, isReady, setSort, addToCart, removeFromCart } = this.props;
-    var s = this.state || null
+    var state = this.state || null
     var id = this.props.location.pathname.slice();
     id = id.replace(/[^-0-9]/gim, '');
-    if (s != null) {
-      for (var i = 0; i < s.films.length; i++) {
-        if (s.films[i].id == id) {
-           jouke = s.films[i];
+    if (state != null) {
+      for (var i = 0; i < state.films.length; i++) {
+        if (state.films[i].id == id) {
+          Newfilm = state.films[i];
         }
       }
     }
@@ -56,7 +55,7 @@ class film extends Component {
         <Card.Group itemsPerRow={4}>
         
 
-            <Film  {...jouke} addToCart={addToCart} removeFromCart={removeFromCart} key={film.id} />
+            <Film  {...Newfilm} addToCart={addToCart} removeFromCart={removeFromCart} key={film.id} />
 
           
           

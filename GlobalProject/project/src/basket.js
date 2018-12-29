@@ -1,6 +1,5 @@
 import React from 'react'
-import {Link } from 'react-router';
-import { Menu, Button, Image, List, Popup } from 'semantic-ui-react';
+import { Image, List, } from 'semantic-ui-react';
 const Basket = ({title,id, image, removeFromCart}) => (
   <List  selection divided verticalAlign="middle">
   <List.Item >

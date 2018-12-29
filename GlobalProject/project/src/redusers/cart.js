@@ -1,7 +1,8 @@
 const InitialState = {
    items:[
-   
+  
    ],
+   userName:""
 };
 
 export default (state = InitialState, action) => {
@@ -24,8 +25,13 @@ export default (state = InitialState, action) => {
 
             };
 
+            case 'NEW_USER':
+            return {
+                    ...state,
+                    userName: action.payload
+                
 
-         
+            };
 
 
         default:

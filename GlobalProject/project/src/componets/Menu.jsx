@@ -2,8 +2,6 @@ import '../App.css';
 import React from 'react';
 import { Menu, Button, Image, List, Popup } from 'semantic-ui-react';
 import { Link } from 'react-router';
-import Film from '../film'
-
 const CartComponent = ({ title, id, image, removeFromCart }) => (
 
   <List selection divided verticalAlign="middle">
@@ -36,7 +34,7 @@ const Login =(user)=>{
   
 }
 
-const MenuComponent = ({ totalPrice, inBasket, items,user,userName,User }) => (
+const MenuComponent = ({ totalPrice, inBasket, items,user,NewUser,userName }) => (
   
   <Menu >
 
@@ -48,16 +46,14 @@ const MenuComponent = ({ totalPrice, inBasket, items,user,userName,User }) => (
 
     <Menu.Menu position='right' >
 
-    
-
-
+   
 
 
       
       <Link to={`/login`}>
       <Menu.Item>
-        <Button >
-        {Login(user) || "Войти"}
+        <Button onClick={ NewUser.bind(user)}>
+        { Login(user) || "Войти"}
         </Button>
       </Menu.Item>
       </Link>

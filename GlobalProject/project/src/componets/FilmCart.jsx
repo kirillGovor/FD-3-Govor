@@ -2,8 +2,6 @@ import React from 'react'
 import { Card, Icon, Image, Button } from 'semantic-ui-react';
 import { Link } from 'react-router';
 
-import { syncHistoryWithStore } from 'react-router-redux';
-import { hashHistory, Route, Router } from 'react-router';
 import '../App.css';
 
 
@@ -11,7 +9,7 @@ import '../App.css';
 
 
 const FilmCard = (film) => {
-  const { title, author, price, image, addToCart, text, addedCount, id, WrappedHome } = film;
+  const { title, author, price, image, addToCart,  addedCount, id} = film;
   return (
 
 

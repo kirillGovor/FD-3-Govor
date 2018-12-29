@@ -1,11 +1,11 @@
 
 import React from 'react';
-import { Menu, Button, Image, List, Popup } from 'semantic-ui-react';
-import MenuS from '../containers/Menu';
+import { Menu, Button } from 'semantic-ui-react';
+
 import { Link } from 'react-router';
 
 
-const Sort = ({ setSort, SortBy, searchQuery, setSeatchQuery }) => {
+const Sort = ({ setSort, SortBy }) => {
 
 
     return (

@@ -1,12 +1,12 @@
 import React from 'react'
-import { Card, Icon, Image, Button, Grid, Item } from 'semantic-ui-react';
+import { Button,  Item } from 'semantic-ui-react';
 import { Link } from 'react-router';
 
 
 
 
 const FilmCard = (film) => {
-  const { title, author, price, image, addToCart, text, addedCount, id, WrappedHome } = film;
+  const { title, author, image, addToCart, text } = film;
   return (
     <div style={{ marginTop: 25 + 'px' }}>
       <Item.Group >

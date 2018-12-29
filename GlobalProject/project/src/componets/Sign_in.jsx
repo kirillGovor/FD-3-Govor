@@ -1,11 +1,11 @@
 import React from 'react';
-import { Menu, Button, Image, List, Popup, Input, Icon, Container } from 'semantic-ui-react';
+import { Menu, Button, Input, Icon, Container } from 'semantic-ui-react';
 import { Link } from 'react-router';
-import Film from '../film'
 
 
 
-const MenuComponent = ({ totalPrice, inBasket, items }) => (
+
+const MenuComponent = ({ }) => (
     <div>
         <Container>
             <Menu >

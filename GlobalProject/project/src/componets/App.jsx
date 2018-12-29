@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import '../store.js';
 import '../App.css';
-//import films from './films.json';
 import axios from 'axios';
 
 import {Container} from 'semantic-ui-react';
@@ -11,7 +10,7 @@ import { Card } from 'semantic-ui-react';
 import Sort from '../containers/Sort';
 import Mobile from '../componets/MobilSort';
 import MenuS from '../containers/Menu';
-import Films from '../film'
+
 
 import {slide as Menu} from 'react-burger-menu';
 
@@ -29,7 +28,7 @@ class App extends Component {
 
   render() {
   
-    const { films,isReady, setSort,addToCart,removeFromCart,user } = this.props;
+    const { films,isReady, setSort,addToCart,removeFromCart,user, } = this.props;
     return (
       <div>
     <Menu className="bm-menu">

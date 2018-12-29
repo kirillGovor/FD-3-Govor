@@ -17,15 +17,7 @@ export default (state = InitialState, action) => {
             };
 
 
-        case 'SET_IS_READY':
-            return {
-                ...state,
-               
-                    ...state,
-                  isReady:  action.payload,
-                
-
-            };
+       
 
         default:
             return state;

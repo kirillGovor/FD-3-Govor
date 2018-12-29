@@ -10,4 +10,8 @@ export const addToCart= (obj) => ({
         });
 
 
-      
+        export const NewUser= (value) => ({
+            type:'NEW_USER',
+            payload: value
+            })
+          

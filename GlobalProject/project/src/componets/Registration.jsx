@@ -1,10 +1,9 @@
 import React from 'react';
 import Menu from '../containers/Menu';
 import Backbone from 'backbone';
-import { Container } from 'semantic-ui-react';
+import {  Button } from 'semantic-ui-react';
 import '../App.css';
-import App from './App';
-import {hashHistory,Route,Router,IndexRoute} from 'react-router';
+
 import { Link } from 'react-router';
 const OktaSignIn = require('@okta/okta-signin-widget/dist/js/okta-sign-in.min.js');
 export default class LoginPage extends React.Component {
@@ -68,8 +67,8 @@ export default class LoginPage extends React.Component {
               <Menu {...this.state}></Menu>
            <p> Здравствуйте,{this.state.user}</p>
            <p>Вы успешно Вошли</p>
-           <a onClick={this.logout}>Выйти</a><br></br>
-          <Link to='/' >Вернуться в  каталог</Link>
+           <Button primary onClick= {this.logout}>  Выйти</Button>
+           <Link to='/' > <Button primary> Вернуться в  каталог</Button></Link>
           </div>
            
           ) : null}
